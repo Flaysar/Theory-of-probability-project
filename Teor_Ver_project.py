@@ -20,7 +20,6 @@ else:
     tasks_num_list = [int(i) for i in tasks_num_list] # переделает все char значения в списке в int-вые
 
 variants_count = int(input('введите количество вариантов ')) # количество вариантов
-f = codecs.open('output.doc', 'w', 'utf-8') # откроем файлик, пока будем записывать туда
 doc = docx.Document()
 for i in range(0, variants_count):
     doc.add_paragraph(f'Вариант {i+1}')
@@ -53,7 +52,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 3:
@@ -67,7 +66,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 4:
@@ -81,7 +80,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 5:
@@ -95,7 +94,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 6:
@@ -109,7 +108,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 7:
@@ -123,7 +122,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 8:
@@ -137,7 +136,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 9:
@@ -151,7 +150,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 10:
@@ -165,7 +164,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 11:
@@ -179,7 +178,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
 
@@ -194,7 +193,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 13:
@@ -208,7 +207,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 14:
@@ -222,7 +221,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 15:
@@ -236,7 +235,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 16:
@@ -250,7 +249,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 17:
@@ -264,7 +263,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 18:
@@ -278,7 +277,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 19:
@@ -292,7 +291,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 20:
@@ -306,7 +305,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 21:
@@ -320,7 +319,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 22:
@@ -334,7 +333,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 23:
@@ -348,7 +347,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 24:
@@ -362,7 +361,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 25:
@@ -376,7 +375,7 @@ for i in range(0, variants_count):
             else:
                 pass
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
     doc.add_paragraph('')
 doc.save('вывод.docx')
