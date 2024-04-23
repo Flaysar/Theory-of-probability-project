@@ -1,5 +1,6 @@
 from random import randint
 from random import uniform
+import docx
 import codecs
 #inuform(начало, конец) - возрщает рандомное вещественное в диапазоне включая концы
 #randint(начало, конец) - возрщает рандомное целое в диапазоне включая концы
@@ -20,8 +21,9 @@ else:
 
 variants_count = int(input('введите количество вариантов ')) # количество вариантов
 f = codecs.open('output.doc', 'w', 'utf-8') # откроем файлик, пока будем записывать туда
+doc = docx.Document()
 for i in range(0, variants_count):
-    f.write(f'Вариант {i+1}\n')
+    doc.add_paragraph(f'Вариант {i+1}')
     for task in tasks_num_list: # идем по списку с номерами заданий
         text = ''
         if task == 1: # если номер = 1, то пишем его
@@ -37,7 +39,7 @@ for i in range(0, variants_count):
             else:
                 pass # pass это пропуск if
                 # задание Димы
-            f.write(text)
+            doc.add_paragraph(text)
             continue
 
         if task == 2: # если номер = 2, то пишем 2 и т.д.
@@ -376,5 +378,5 @@ for i in range(0, variants_count):
                 # задание Димы
             f.write(text)
             continue
-    f.write('\n'+'\n')
-f.close()
+    doc.add_paragraph('')
+doc.save('вывод.docx')
