@@ -29,7 +29,6 @@ for i in range(0, variants_count):
             coin_flip = randint(1, 3) # 1 - вариант Егора, 2 - Маги, 3 - Димы
             coin_flip = 1 #!!!!!!!!!!!!!! убрать потом
             if coin_flip == 1: # задание Егора
-                text = '1. На штрафной стоянке наугад выбирают автомобиль с четырехзначным номером. Найти вероятность того, что его номер: \na) '
                 text+=Egors_tasks.task_1()
 
             elif coin_flip == 2:
@@ -43,9 +42,9 @@ for i in range(0, variants_count):
 
         if task == 2: # если номер = 2, то пишем 2 и т.д.
             coin_flip = randint(1, 3) # 1 - вариант Егора, 2 - Маги, 3 - Димы
+            coin_flip=1 #!!!!!!!!!!!!!! убрать потом
             if coin_flip == 1:
-                pass # pass означает пропуск условия
-                # задание Егора
+                text+=Egors_tasks.task_2()
             elif coin_flip == 2:
                 pass
                 # задание Маги
@@ -57,9 +56,9 @@ for i in range(0, variants_count):
 
         if task == 3:
             coin_flip = randint(1, 3) # 1 - вариант Егора, 2 - Маги, 3 - Димы
+            coin_flip = 1  # !!!!!!!!!!!!!! убрать потом
             if coin_flip == 1:
-                pass # pass означает пропуск условия
-                # задание Егора
+                text+=Egors_tasks.task_3()
             elif coin_flip == 2:
                 pass
                 # задание Маги
@@ -71,9 +70,9 @@ for i in range(0, variants_count):
 
         if task == 4:
             coin_flip = randint(1, 3) # 1 - вариант Егора, 2 - Маги, 3 - Димы
+            coin_flip = 1  # !!!!!!!!!!!!!! убрать потом
             if coin_flip == 1:
-                pass # pass означает пропуск условия
-                # задание Егора
+                text+=Egors_tasks.task_4()
             elif coin_flip == 2:
                 pass
                 # задание Маги
@@ -85,9 +84,9 @@ for i in range(0, variants_count):
 
         if task == 5:
             coin_flip = randint(1, 3) # 1 - вариант Егора, 2 - Маги, 3 - Димы
+            coin_flip = 1  # !!!!!!!!!!!!!! убрать потом
             if coin_flip == 1:
-                pass # pass означает пропуск условия
-                # задание Егора
+                text+=Egors_tasks.task_5()
             elif coin_flip == 2:
                 pass
                 # задание Маги
@@ -99,9 +98,9 @@ for i in range(0, variants_count):
 
         if task == 6:
             coin_flip = randint(1, 3) # 1 - вариант Егора, 2 - Маги, 3 - Димы
+            coin_flip = 1  # !!!!!!!!!!!!!! убрать потом
             if coin_flip == 1:
-                pass # pass означает пропуск условия
-                # задание Егора
+                text+=Egors_tasks.task_6()
             elif coin_flip == 2:
                 pass
                 # задание Маги
