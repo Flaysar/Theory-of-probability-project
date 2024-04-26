@@ -149,14 +149,78 @@ def task_6():
     text = f'6. В коробке находится {purple} розовых и {green} зеленых кубиков. Из коробки наугад достают два кубика. ' \
            f'Найти вероятность того, что {task} (извлеченный первый кубик обратно не положили).\n'
     if type == 0:
-        answer += f'{green}/{green + purple} * {green - 1}/{green + purple - 1} или '\
-            f'{round(green /(green + purple) * (green - 1)/(green + purple - 1), 4)} '
+        answer += f'{green}/{green + purple} * {green - 1}/{green + purple - 1} или ' \
+                  f'{round(green / (green + purple) * (green - 1) / (green + purple - 1), 4)} '
     elif type == 1:
-        answer += f'{purple}/{green + purple} * {purple - 1}/{green + purple - 1} или '\
-            f'{round(purple /(green + purple) * (purple - 1)/(green + purple - 1), 4)} '
+        answer += f'{purple}/{green + purple} * {purple - 1}/{green + purple - 1} или ' \
+                  f'{round(purple / (green + purple) * (purple - 1) / (green + purple - 1), 4)} '
     else:
-        answer += f'{purple}/{green + purple} * {green}/{green + purple - 1} + '\
-            f'{green}/{green + purple} * {purple}/{green + purple - 1} или '\
-            f'{round((purple/(green + purple) * green/(green + purple - 1)*2), 4) }'
+        answer += f'{purple}/{green + purple} * {green}/{green + purple - 1} + ' \
+                  f'{green}/{green + purple} * {purple}/{green + purple - 1} или ' \
+                  f'{round((purple / (green + purple) * green / (green + purple - 1) * 2), 4)}'
     text += f'Ответ: {answer}'
+    return text
+
+
+def task_7():
+    answer = ''
+    rand1 = randint(1, 3) * 10
+    rand2 = randint(2, 4) * 10
+    rand3 = (100 - rand1 - rand2)
+    while (rand1 == rand2): rand2 = randint(2, 4) * 10
+    chance1 = round(uniform(0.4, 0.6), 1)
+    chance2 = round(uniform(0.5, 0.8), 1)
+    while chance1 == chance2: chance2 = round(uniform(0.5, 0.8), 1)
+    chance3 = round(uniform(0.8, 0.9), 1)
+    if chance2 == 0.8: chance3 = 0.9
+    formulation = 'одном случае'
+    if chance3 == 0.8: formulation = 'двух случаях'
+    text = f'7. Для защиты от грабителей {rand1}% квартир оборудованы пожарной сиреной, в {rand2}% квартир ' \
+           'в дверях заложены пиропатроны, а в остальных квартирах содержатся гремучие змеи. Пожарная сирена ' \
+           f'отпугивает грабителей с вероятностью {chance1}, взрыв пиропатрона — с вероятностью {chance2}, а ограбить ' \
+           f'квартиру с гремучими змеями удается лишь в {formulation} из десяти. Найти вероятность того, что ' \
+           'грабителям удастся сделать свое черное дело, если квартира выбирается наугад.\n'
+    answer += f'{round(rand1 / 100 * (1 - chance1) + rand2 / 100 * (1 - chance2) + rand3 / 100 * (1 - chance3), 4)}'
+    text += "Ответ: " + answer
+    return text
+
+
+def task_8():
+    rand1 = randint(2, 5)
+    rand2 = randint(2, 5)
+    while rand1 == rand2: rand2 = randint(2, 5)
+    rand3 = randint(2, 5)
+    while (rand1 == rand3) or (rand2 == rand3): rand3 = randint(2, 5)
+    wind = ['флейта', 'фагот', 'валторна', 'дудка', 'саксофон']
+    wind_str = ''
+    for i in range(0, rand1):
+        wind_str += wind[i] + ', '
+    wind_str = wind_str[:-2]
+    percussion = ['барабан', 'ксилофон', 'бубен', 'маракасы', 'джембе']
+    percussion_str = ''
+    for i in range(0, rand2):
+        percussion_str += percussion[i] + ', '
+    percussion_str = percussion_str[:-2]
+    stringed = ['скрипка', 'гитара', 'балалайка', 'клевесин', 'мандолина']
+    stringed_str = ''
+    for i in range(0, rand3):
+        stringed_str += stringed[i] + ', '
+    stringed_str = stringed_str[:-2]
+    chance1 = round(uniform(0.2, 0.4), 1)
+    chance2 = round(uniform(0.4, 0.5), 1)
+    while chance1 == chance2: chance2 = round(uniform(0.4, 0.5), 1)
+    chance3 = round(uniform(0.6, 0.8), 1)
+    rand_inst = randint(0, rand3 - 1)
+    task = 'была'
+    if rand_inst == 3: task = 'был'
+    text = f'3. В студенческом оркестре {rand1} духовых инструмента ({wind_str}), {rand2} ударных ({percussion_str}) ' \
+           f'и {rand3} струнных ({stringed_str}). В комнате, где хранятся музыкальные инструменты, сыро, и ' \
+           f'вероятность того, что инструмент будет расстроен, для духовых инструментов равна {chance1}, для ' \
+           f'ударных — {chance2}, для струнных — {chance3}. Перед концертом настройщик берет наугад инструмент, ' \
+           f'который оказывается в хорошем состоянии. Найти вероятность того, что это {task} {stringed[rand_inst]}.\n'
+    answer = ''
+    sum = rand1 + rand2 + rand3
+    chance_good = round(rand1 / sum * (1-chance1) + rand2 / sum * (1-chance2) + rand3 / sum * (1-chance3), 4)
+    answer += f'Ответ: {round((1-chance3) * 1 / sum / chance_good, 4)}'
+    text += answer
     return text

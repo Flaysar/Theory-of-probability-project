@@ -112,9 +112,9 @@ for i in range(0, variants_count):
 
         if task == 7:
             coin_flip = randint(1, 3) # 1 - вариант Егора, 2 - Маги, 3 - Димы
+            coin_flip = 1  # !!!!!!!!!!!!!! убрать потом
             if coin_flip == 1:
-                pass # pass означает пропуск условия
-                # задание Егора
+                text += Egors_tasks.task_7()
             elif coin_flip == 2:
                 pass
                 # задание Маги
@@ -126,9 +126,9 @@ for i in range(0, variants_count):
 
         if task == 8:
             coin_flip = randint(1, 3) # 1 - вариант Егора, 2 - Маги, 3 - Димы
+            coin_flip = 1  # !!!!!!!!!!!!!! убрать потом
             if coin_flip == 1:
-                pass # pass означает пропуск условия
-                # задание Егора
+                text += Egors_tasks.task_8()
             elif coin_flip == 2:
                 pass
                 # задание Маги
