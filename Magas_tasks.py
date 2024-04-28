@@ -1,4 +1,4 @@
-﻿# coding: utf-8
+# coding: utf-8
 
 from math import sqrt
 from functions import integr_lapl, local_lapl
@@ -198,7 +198,7 @@ def task_7():
     ph2a = p2*ph2/pa
     ph3a = p3*ph3/pa
 
-    answer = str(round(max(ph1a,ph2a,ph3a),2))+" (c округлением до сотых)"
+    answer = str(round(max(ph1a,ph2a,ph3a),2))
     task_and_answer=[task,answer]
     return task_and_answer
 
@@ -236,20 +236,148 @@ def task_9():
     task_and_answer=[task,answer]
     return task_and_answer
 
-def task_10():#недоделано
+def task_10():
     task = "Задача №10\n"
-    n=randint(3,7)*100
-    p = randint(3,7)/10
+    n= randint(3,7)*100
+    p = randint(3,7)/1000
     k=5
-    task += "Среди семян ржи "+str(p)+"% семян сорняков. Какова вероятность при случайном наборе "+str(n)+" семян обнаружить пять семян сорняков?"
+    task += "Среди семян ржи "+str(p*100)+"% семян сорняков. Какова вероятность при случайном наборе "+str(n)+" семян обнаружить пять семян сорняков?"
     
     answer = ""
     
     x = (k-n*p)/sqrt(n*p*(1-p))
     print(str(n)+"\t"+str(p)+"\t"+str(x))
-    answer = str(round(float(local_lapl(round(abs(x),1)))/sqrt(n*p*(1-p)),3))
+    answer = str(round(float(local_lapl(round(x,1)))/sqrt(n*p*(1-p)),3))
     
     task_and_answer=[task,answer]
     return task_and_answer
 
-print(task_10())
+def task_11():
+    task = "Задача №11\n"
+    
+    p = randint(1,9)/10
+    q = round(1 - p,1)
+
+    task += "Вероятность производства нестандартного изделия равна "+str(q)+" . Контролер проверяет не более пяти изделий из"
+    task += " партии. Если изделие оказывается нестандартным, испытания прекращаются, а партия бракуется. Если изделие"
+    task += " оказывается стандартным, контролер берет следующее и т. д. Составить ряд распределения числа проверенных"
+    task += " изделий. Найти М(Х), D(X), Q(X), F(X) этой случайной величины. Построить график F(X)."
+    
+    answer = ""
+    
+    p1 = round(q,1)
+    p2 = round(p * q,2)
+    p3 = round(p * p * q,3)
+    p4 = round(p * p * p * q,4)
+    p5 = round(p * p * p * p,4)
+    
+
+    print()
+    answer = "Ряд распределения: \nxi\t1\t2\t3\t4\t5\n"
+    answer += "pi\t"+str(p1)+"\t"+str(p2)+"\t"+str(p3)+"\t"+str(p4)+"\t"+str(p5)+"\n\n"
+    M = 1*p1+2*p2+3*p3+4*p4+5*p5
+    answer += "M(X) = "+str(M)+"\t"
+    D = round(1*p1+4*p2+9*p3+16*p4+25*p5 - M**2,3)
+    answer += "D(X) = "+str(D)+"\t"
+    Q = round(sqrt(D),3)
+    answer+="Q(X) = "+str(Q)+"\n"
+    F ="\t__________\n"
+    F+="\t| 0\t, x<=1\n"
+    F+="\t| "+str(round(p1,1))+"\t, 1<x<=2\n"
+    F+="F(X) =\t| "+str(round(p1+p2, 2))+"\t, 2<x<=3\n"
+    F+="\t| "+str(round(p1+p2+p3, 3))+" , 3<x<=4\n"
+    F+="\t| "+str(round(p1+p2+p3+p4, 4))+", 4<x<=5\n"
+    F+="\t| 1\t, 5<x\n"
+    F+="\t‾‾‾‾‾‾‾‾‾‾"
+    answer+=F
+    task_and_answer=[task,answer]
+    return task_and_answer
+
+def task_12():
+    task = "Задача №12\n"
+    
+    n = 3
+    p = randint(1,9)/10
+    q = round(1 - p,1)
+
+    task += "Производится три независимых опыта, в каждом из которых событие появляется с вероятностью "+str(p)+" . Составить"
+    task += "ряд распределения числа появлений события в трех опытах. Найти M(X) и D(X) этой случайной величины."
+    
+    answer = ""
+    
+    p0 = round(q * q * q, 3)
+    p1 = round(3 * p * q * q, 3)
+    p2 = round(3 * p * p * q, 3)
+    p3 = round(p * p * p, 3)
+    
+
+    print()
+    answer = "Ряд распределения: \nxi\t0\t1\t2\t3\n"
+    answer += "pi\t"+str(p0)+"\t"+str(p1)+"\t"+str(p2)+"\t"+str(p3)+"\n\n"
+    M = round(n*p,1)
+    answer += "M(X) = "+str(M)+"\t"
+    D = round(n*p*q,2)
+    answer += "D(X) = "+str(D)+"\t"
+    
+    task_and_answer=[task,answer]
+    return task_and_answer
+
+def task_13():
+    task = "Задача №13\n"
+    r = randint(1,3)
+    n=0
+    if r==1:
+        n = 1000
+    elif r==2:
+        n = 2000
+    else:
+        n = 10000
+  
+    p = 1/n
+
+    task += "Устройство содержит "+str(n)+" одинаково надежных элементов, вероятность отказа каждого из них равна "
+    task += str(p)+". Составить ряд распределения числа отказавших элементов. Найти M(X) этой случайной величины."
+    
+    answer = ""
+    
+    answer = "Ряд распределения: \nxi\t0\t1\t\t2\t\t\t...\tk\t\t\t...\tn\n"
+    answer += "pi\te^(-λ)\tλ*e^(-λ)\t((λ^2)/2)*e^(-λ)\t...\t((λ^k)/k)*e^(-λ)\t...\t((λ^n)/n)*e^(-λ)\n\n"
+    answer += ",где n = "+str(n)+"\tp = "+str(p)+"\tλ = n * p = "+str(n*p)+"\n\n"
+    M = n*p
+    answer += "M(X) = n * p = "+str(M)+"\t"
+    
+    task_and_answer=[task,answer]
+    return task_and_answer
+
+def task_14():#недоделано
+    task = "Задача №14\n"
+    
+    F ="\t__________\n"
+    F+="\t| 0\t\t, x<=1\t\tα = 1,2\n"
+    F+="F(X) =\t| (x^2-x)/2\t, 1<x<=2\tβ = 1,5\n"
+    F+="\t| 1\t\t, 2<x\n"
+    F+="\t‾‾‾‾‾‾‾‾‾‾"
+    a = 1.2
+    b = 1.5
+    
+
+    task += "Дана функция распределения F(x) непрерывной случайной величины X.\nТребуется:\n"
+    task += "\t1) найти плотность вероятности f(x);\n"
+    task += "\t2) построить графики F(x) и f(x);\n"
+    task += "\t3) найти M(X), D(X), (Х);\n"
+    task += "\t4) найти Р(α < X < β) для данных α, β.\n"
+    task += F
+    print(task)
+    answer = ""
+    
+    answer = "Ряд распределения: \nxi\t0\t1\t\t2\t\t\t...\tk\t\t\t...\tn\n"
+    answer += "pi\te^(-λ)\tλ*e^(-λ)\t((λ^2)/2)*e^(-λ)\t...\t((λ^k)/k)*e^(-λ)\t...\t((λ^n)/n)*e^(-λ)\n\n"
+    answer += ",где n = "+str(n)+"\tp = "+str(p)+"\tλ = n * p = "+str(n*p)+"\n\n"
+    M = n*p
+    answer += "M(X) = n * p = "+str(M)+"\t"
+    
+    task_and_answer=[task,answer]
+    return task_and_answer
+
+#print(task_14()[0])
+#print(task_14()[1])
