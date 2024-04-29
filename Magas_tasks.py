@@ -283,10 +283,10 @@ def task_11():
     answer+="Q(X) = "+str(Q)+"\n"
     F ="\t__________\n"
     F+="\t| 0\t, x<=1\n"
-    F+="\t| "+str(round(p1,1))+"\t, 1<x<=2\n"
-    F+="F(X) =\t| "+str(round(p1+p2, 2))+"\t, 2<x<=3\n"
-    F+="\t| "+str(round(p1+p2+p3, 3))+" , 3<x<=4\n"
-    F+="\t| "+str(round(p1+p2+p3+p4, 4))+", 4<x<=5\n"
+    F+="\t| "+str(round(p1,1))+"\t, 1<x≤2\n"
+    F+="F(X) =\t| "+str(round(p1+p2, 2))+"\t, 2<x≤3\n"
+    F+="\t| "+str(round(p1+p2+p3, 3))+" , 3<x≤4\n"
+    F+="\t| "+str(round(p1+p2+p3+p4, 4))+", 4<x≤5\n"
     F+="\t| 1\t, 5<x\n"
     F+="\t‾‾‾‾‾‾‾‾‾‾"
     answer+=F
@@ -349,35 +349,108 @@ def task_13():
     task_and_answer=[task,answer]
     return task_and_answer
 
-def task_14():#недоделано
+def task_14():
     task = "Задача №14\n"
     
+    a = randint(11,14)/10
+    b = randint(15,19)/10
+    
     F ="\t__________\n"
-    F+="\t| 0\t\t, x<=1\t\tα = 1,2\n"
-    F+="F(X) =\t| (x^2-x)/2\t, 1<x<=2\tβ = 1,5\n"
+    F+="\t| 0\t\t, x≤1\t\tα = "+str(a)+"\n"
+    F+="F(X) =\t| (x^2-x)/2\t, 1<x≤2\tβ = "+str(b)+"\n"
     F+="\t| 1\t\t, 2<x\n"
     F+="\t‾‾‾‾‾‾‾‾‾‾"
-    a = 1.2
-    b = 1.5
     
-
     task += "Дана функция распределения F(x) непрерывной случайной величины X.\nТребуется:\n"
     task += "\t1) найти плотность вероятности f(x);\n"
     task += "\t2) построить графики F(x) и f(x);\n"
-    task += "\t3) найти M(X), D(X), (Х);\n"
+    task += "\t3) найти M(X), D(X), Q(Х);\n"
     task += "\t4) найти Р(α < X < β) для данных α, β.\n"
     task += F
-    print(task)
+    
     answer = ""
     
-    answer = "Ряд распределения: \nxi\t0\t1\t\t2\t\t\t...\tk\t\t\t...\tn\n"
-    answer += "pi\te^(-λ)\tλ*e^(-λ)\t((λ^2)/2)*e^(-λ)\t...\t((λ^k)/k)*e^(-λ)\t...\t((λ^n)/n)*e^(-λ)\n\n"
-    answer += ",где n = "+str(n)+"\tp = "+str(p)+"\tλ = n * p = "+str(n*p)+"\n\n"
-    M = n*p
-    answer += "M(X) = n * p = "+str(M)+"\t"
+    f ="\t__________\n"
+    f+="\t| 0\t\t, x≤1\n"
+    f+="f(X) =\t| x-(1/2)\t, 1<x≤2\n"
+    f+="\t| 0\t\t, 2<x\n"
+    f+="\t‾‾‾‾‾‾‾‾‾‾\n"
+
+    answer = "1)"+f
+    answer += "3) M(x) = 1.58\tD(x) = 0.076\tQ(x) = 0.076\n"
+    answer += "4) P("+str(a)+"<x<"+str(b)+") = F("+str(b)+")-F("+str(a )+") = "+str( round(((b*b-b)-(a*a-a))/2,3) )
     
     task_and_answer=[task,answer]
     return task_and_answer
 
-#print(task_14()[0])
-#print(task_14()[1])
+def task_15():
+    task = "Задача №15\n"
+    
+    f ="\t__________\n"
+    f+="\t| 0\t\t, x<0\n"
+    f+="f(X) =\t| a * (2x+1)\t, 0≤x≤1\n"
+    f+="\t| 0\t\t, 1<x\n"
+    f+="\t‾‾‾‾‾‾‾‾‾‾\n"
+       
+    task += "Дана плотность вероятности f(x) непрерывной случайной величины X.\nТребуется:\n"
+    task += "\t1) найти параметр a;\n"
+    task += "\t2) найти функцию распределения F(x);\n"
+    task += "\t3) построить графики f(x) и F(x);\n"
+    task += "\t4) найти асимметрию и эксцесс X.\n"
+    task += f
+    
+    answer = ""
+    
+    F ="\t__________\n"
+    F+="\t| 0\t\t, x<0\n"
+    F+="F(X) =\t| (x^2+x)/2\t, 0≤x≤1\n"
+    F+="\t| 1\t\t, 1<x\n"
+    F+="\t‾‾‾‾‾‾‾‾‾‾\n"
+
+    answer = "1) a = 1\n"
+    answer += "2) "+F
+    answer += "4) асимметрия = -0.007; эксцесс = 0.011 .\n"
+    
+    task_and_answer=[task,answer]
+    return task_and_answer
+
+def task_16():
+    task = "Задача №16\n"
+    
+    a = -5
+    b = 1
+
+    f ="\t__________\n"
+    f+="\t| 0\t\t, x≤-6\t\tα = "+str(a)+"\n"
+    f+="f(X) =\t| (2x+1) / 9\t, -6<x≤-3\tβ = "+str(b)+"\n"
+    f+="\t| -x / 9\t, -3<x≤0\n"
+    f+="\t| 0\t\t, 0<x\n"
+    f+="\t‾‾‾‾‾‾‾‾‾‾\n"
+    
+    task += "Дана плотность вероятности f(x) непрерывной случайной величины X, имеющая две ненулевые составляющие формулы.\nТребуется:\n"
+    task += "\t1) проверить свойство: интеграл f(x) на промежутке (-∞,+∞) = 1 ;\n"
+    task += "\t2) построить график f(x);\n"
+    task += "\t3) найти функцию распределения F(x)\n"
+    task += "\t4) найти Р(α < X < β) для данных α, β.\n"
+    task += "\t5) найти М(Х), D(X), Q(X).\n"
+    task += f
+    
+    answer = ""
+    
+    F ="\t__________\n"
+    F+="\t| 0\t\t, x≤-6\n"
+    F+="F(X) =\t| (x^2+12x+36)/18, -6<x≤-3\n"
+    F+="\t| 1 - (x^2/18)\t, -3<x≤0\n"
+    F+="\t| 1\t\t, 0<x\n"
+    F+="\t‾‾‾‾‾‾‾‾‾‾\n"
+
+    answer = "1) свойство выполняется\n"
+    answer += "3) "+F
+    answer += "4) P("+str(a)+"<x<"+str(b)+") = F("+str(b)+")-F("+str(a)+") = "+str( round(1 -( (a*a+12*a+36) / 18),3) )+"\n"
+    answer += "5) M(X) = -3\tD(X) = 1.5\tQ(X) = 1.22"
+    
+    task_and_answer=[task,answer]
+    return task_and_answer
+
+print(task_16()[0])
+print(task_16()[1])
