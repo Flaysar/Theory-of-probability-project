@@ -224,3 +224,26 @@ def task_8():
     answer += f'Ответ: {round((1-chance3) * 1 / sum / chance_good, 4)}'
     text += answer
     return text
+
+def task_9():
+    chance = round(uniform(0.7, 0.9), 1)
+    bad_chance = round(1 - chance, 1)
+    num =randint(8, 10)
+    type = f'будет, по меньшей мере, {num-1} успешных'
+    var = randint(0, 2)
+    if var == 1:
+        type = 'будет не более 1 провала'
+    elif var ==2:
+        type = f'все будут успешны'
+
+    text = '9. Вероятность успешного запуска управляемого снаряда '\
+    f'равна {chance}. Найти вероятность того, что из {num} запусков '\
+    f'{type}.\n'
+    answer = ''
+    if var == 0 or var==1:
+        answer += f'{chance}^{num} + C({num} по {num-1}) * {chance}^{num-1} * {bad_chance} или '\
+        f'{round(chance**num + combination(num, num-1)[1] * chance**(num-1) * bad_chance, 4)}'
+    elif var == 2:
+        answer += f'{chance}^{num} или {round(chance**num, 4)}'
+    text+=answer
+    return text
