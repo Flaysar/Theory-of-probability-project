@@ -247,3 +247,31 @@ def task_9():
         answer += f'{chance}^{num} или {round(chance**num, 4)}'
     text+=answer
     return text
+
+def task_10():
+    chance_list = [0.75, 0.8, 0.85, 0.9]
+    chance = chance_list[randint(0, 3)]
+    bad_chance = round(1 - chance, 2)
+    num_list = [90, 100, 110]
+    num = num_list[randint(0, 2)]
+    exactly = num - list([20, 25, 30])[randint(0, 2)]
+    text = f'10. Всхожесть семян составляет {round(chance*100)}%. Найти вероятность того, '\
+    f'что из {num} семян взойдет: \nа) ровно {exactly}; '
+    f'\nб) не менее {exactly} и не более {exactly+15}.\n'
+    return text
+     
+def task_11():
+    num = list([600, 700,  800, 900])[randint(0, 3)]
+    chance = round(uniform(0.004, 0.01), 3)
+    count = randint(8, 12)
+    text = f'11. На прядильной фабрике работница обслуживает {num} веретен. '\
+    'При вращении веретена пряжа рвется в случайные моменты времени из-за '\
+    'неравномерности натяжения, неровности и других причин. Считая, что '\
+    'вероятность обрыва пряжи на каждом из веретен в течение времени Т '\
+    f'равна {chance}, найти вероятность того, что за это время произойдет {count} обрывов.\n'
+    answer = ''
+    lamb = round(num*chance)
+    probability = lamb**count / math.factorial(count) * math.exp(-lamb)
+    answer = f'{lamb}^{count} / {count}! * e^-{lamb} или {round(probability, 4)}'
+    text+=answer
+    return text
