@@ -67,7 +67,11 @@ def integr_lapl(num):
      return 0.4999
   elif num>3.89:
       return 0.5
-  if num<0:
+  elif -3.61>num>-3.89:
+     return -0.4999
+  elif num<-3.89:
+      return -0.5
+  elif num<0:
       return -integr_teor_dict[-num]
   else: return integr_teor_dict[num]
 
