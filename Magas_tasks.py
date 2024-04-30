@@ -509,7 +509,38 @@ def task_19():
     task_and_answer=[task,answer]
     return task_and_answer
 
-check = task_19()
+def task_20():
+    task = "Задача №20\n"
+
+    n = randrange(35,45,5)
+    m0 = 50
+    y0 = randrange(10,20,2)
+    a = 1500 if randint(0,1) else 2000
+    b = a + 500
+    
+    task += f'Измерительная система состоит из {n} одинаковых датчиков. Время безотказной работы i-го датчика Ti '
+    task += f'имеет нормальное распределение (m = {m0} ч; σ = {y0} ч), одинаковое для всех датчиков. В случае отказа i-го '
+    task += f'датчика происходит мгновенное и безотказное переключение на следующий. Если отказали все датчики, то '
+    task += f'измерительная система выходит из строя. С какой вероятностью измерительная система проработает до выхода '
+    task += f'из строя от {a} до {b} ч? \n'
+    
+    answer = ""
+    
+    m = n * m0
+    D = n * y0 * y0
+    y = round(sqrt(D),2)
+    
+    P = float(integr_lapl(round((b-m)/y , 2))-integr_lapl(round((a-m)/y , 2)))
+    P = round(P,4)
+    answer += f'm = M(T) = M(ΣTi) = n * m0 = {m}\t'
+    answer += f'D(T) = D(ΣTi) = n * σ0^2 = {D} \t'
+    answer += f'σ = √D(T) = {y} \n\n'
+    answer += f'P({a}<X<{b}) = Ф( ({b}-{m}) / {y}) - Ф( ({a}-{m}) / {y}) = {P}'
+
+    task_and_answer=[task,answer]
+    return task_and_answer
+
+check = task_20()
 
 #print(check[0])
 #print(check[1])
