@@ -2,7 +2,7 @@
 
 from math import sqrt
 from functions import integr_lapl, local_lapl
-from random import randint
+from random import randint, randrange
 '''
 def myFunction():
     pass
@@ -261,7 +261,7 @@ def task_11():
     task += "Вероятность производства нестандартного изделия равна "+str(q)+" . Контролер проверяет не более пяти изделий из"
     task += " партии. Если изделие оказывается нестандартным, испытания прекращаются, а партия бракуется. Если изделие"
     task += " оказывается стандартным, контролер берет следующее и т. д. Составить ряд распределения числа проверенных"
-    task += " изделий. Найти М(Х), D(X), Q(X), F(X) этой случайной величины. Построить график F(X)."
+    task += " изделий. Найти М(Х), D(X), σ(X), F(X) этой случайной величины. Построить график F(X)."
     
     answer = ""
     
@@ -271,8 +271,6 @@ def task_11():
     p4 = round(p * p * p * q,4)
     p5 = round(p * p * p * p,4)
     
-
-    print()
     answer = "Ряд распределения: \nxi\t1\t2\t3\t4\t5\n"
     answer += "pi\t"+str(p1)+"\t"+str(p2)+"\t"+str(p3)+"\t"+str(p4)+"\t"+str(p5)+"\n\n"
     M = 1*p1+2*p2+3*p3+4*p4+5*p5
@@ -280,7 +278,7 @@ def task_11():
     D = round(1*p1+4*p2+9*p3+16*p4+25*p5 - M**2,3)
     answer += "D(X) = "+str(D)+"\t"
     Q = round(sqrt(D),3)
-    answer+="Q(X) = "+str(Q)+"\n"
+    answer+="σ(X) = "+str(Q)+"\n"
     F ="\t__________\n"
     F+="\t| 0\t, x<=1\n"
     F+="\t| "+str(round(p1,1))+"\t, 1<x≤2\n"
@@ -310,8 +308,6 @@ def task_12():
     p2 = round(3 * p * p * q, 3)
     p3 = round(p * p * p, 3)
     
-
-    print()
     answer = "Ряд распределения: \nxi\t0\t1\t2\t3\n"
     answer += "pi\t"+str(p0)+"\t"+str(p1)+"\t"+str(p2)+"\t"+str(p3)+"\n\n"
     M = round(n*p,1)
@@ -364,7 +360,7 @@ def task_14():
     task += "Дана функция распределения F(x) непрерывной случайной величины X.\nТребуется:\n"
     task += "\t1) найти плотность вероятности f(x);\n"
     task += "\t2) построить графики F(x) и f(x);\n"
-    task += "\t3) найти M(X), D(X), Q(Х);\n"
+    task += "\t3) найти M(X), D(X), σ(Х);\n"
     task += "\t4) найти Р(α < X < β) для данных α, β.\n"
     task += F
     
@@ -377,7 +373,7 @@ def task_14():
     f+="\t‾‾‾‾‾‾‾‾‾‾\n"
 
     answer = "1)"+f
-    answer += "3) M(x) = 1.58\tD(x) = 0.076\tQ(x) = 0.076\n"
+    answer += "3) M(x) = 1.58\tD(x) = 0.076\tσ(x) = 0.076\n"
     answer += "4) P("+str(a)+"<x<"+str(b)+") = F("+str(b)+")-F("+str(a )+") = "+str( round(((b*b-b)-(a*a-a))/2,3) )
     
     task_and_answer=[task,answer]
@@ -417,8 +413,8 @@ def task_15():
 def task_16():
     task = "Задача №16\n"
     
-    a = -5
-    b = 1
+    a = randint(-5,-3)
+    b = randint(1,100)
 
     f ="\t__________\n"
     f+="\t| 0\t\t, x≤-6\t\tα = "+str(a)+"\n"
@@ -432,7 +428,7 @@ def task_16():
     task += "\t2) построить график f(x);\n"
     task += "\t3) найти функцию распределения F(x)\n"
     task += "\t4) найти Р(α < X < β) для данных α, β.\n"
-    task += "\t5) найти М(Х), D(X), Q(X).\n"
+    task += "\t5) найти М(Х), D(X), σ(X).\n"
     task += f
     
     answer = ""
@@ -447,10 +443,73 @@ def task_16():
     answer = "1) свойство выполняется\n"
     answer += "3) "+F
     answer += "4) P("+str(a)+"<x<"+str(b)+") = F("+str(b)+")-F("+str(a)+") = "+str( round(1 -( (a*a+12*a+36) / 18),3) )+"\n"
-    answer += "5) M(X) = -3\tD(X) = 1.5\tQ(X) = 1.22"
+    answer += "5) M(X) = -3\tD(X) = 1.5\tσ(X) = 1.22"
     
     task_and_answer=[task,answer]
     return task_and_answer
 
-print(task_16()[0])
-print(task_16()[1])
+def task_17():
+    task = "Задача №17\n"
+
+    n = 5 if randint(0,1) else 10
+    arr = ["одну минуту","две минуты","три минуты","четыре минуты"]
+    t = randint(0,3)
+    s = arr[t]
+
+    task += f'Интервал движения трамвая равен {n} мин. Пассажир подходит к остановке в некоторый момент времени.'
+    task += " Какова вероятность того, что он подошел не ранее чем через минуту после ухода предыдущего трамвая, "
+    task += f"но не позднее, чем за {s} до отхода следующего?"
+    
+    answer = ""
+    
+    answer += str((n-2-t)/10)
+    task_and_answer=[task,answer]
+    return task_and_answer
+
+def task_18():
+    task = "Задача №18\n"
+
+    a0 = randint(1,10)
+    b0 = randint(13,24)
+    a1 = randint(a0,11)
+    b1 = randint(12,b0)
+    
+
+    task += f'Все значения равномерно распределенной случайной величины X лежат на отрезке [{a0}; {b0}]. '
+    task += f'Какова вероятность события: X принадлежит [{a1}; {b1}]?'
+    
+    answer = ""
+    
+    answer += str(round((b1-a1)/(b0-a0),3))
+    task_and_answer=[task,answer]
+    return task_and_answer
+
+def task_19():
+    task = "Задача №19\n"
+
+    m = randrange(35,45,5)
+    q = 5
+    x1 = randint(20,30)
+    x2 = randint(35,50)
+    
+    task += f'Случайная величина X имеет нормальное распределение с математическим '
+    task += f'ожиданием m = {m} и σ = 5. Построить график плотности вероятности f(x) и ' 
+    task += f'сравнить вероятности попадания X в интервалы (0; {x1}) и ({x2}; 55).\n'
+    
+    answer = ""
+    
+    answer += f'Точка максимума: ({m}, 1/({q}*√2π)) ; Точки перегиба: ({m-q}, 1/({q}*√2πe)), (({m+q}, 1/({q}*√2πe)))\n'
+    P1 = float(integr_lapl((x1-m)/5)-integr_lapl((-m)/5))
+    P1 = round(P1,4)
+    P2 = float(integr_lapl((55-m)/5)-integr_lapl((x2-m)/5))
+    P2 = round(P2,4)
+    answer += f'P(0<X<{x1}) = {P1}\t'
+    answer += f'P({x2}<X<55) = {P2}\n'
+    answer += f'P(0<X<{x1})<P({x2}<X<55)' if P1<P2 else f'P(0<X<{x1})>P({x2}<X<55)'
+    task_and_answer=[task,answer]
+    return task_and_answer
+
+check = task_19()
+
+#print(check[0])
+#print(check[1])
