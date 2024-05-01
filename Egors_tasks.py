@@ -286,20 +286,153 @@ def task_12():
     f'равна {chance}. Составить ряд распределения числа библиотек, которые посетит студент, '\
     f'если в городе {count} библиотеки. Найти М(Х), D(X), (X), F(X) этой случайной величины. '\
     'Построить график F(X).\n'
-    answer = ''
+    answer = '12.\n '
+    for i in range(1, count+1):
+        answer+=f'{i}\t'
+    answer+='\n'
     count_dict = {}
     in_first_bib = chance
     for i in range(1, count+1):
         if i==count:
             in_first_bib/= chance
             count_dict[i]=round(in_first_bib, 3)
+            answer+=f'{count_dict[i]}\t'
         else:
             count_dict[i]=round(in_first_bib, 3)
+            answer+=f'{count_dict[i]}\t'
         in_first_bib*=bad_chance
-    for i in count_dict.values():
-        print(i)
+    answer+='\n'
     Mx = discr_math_expectation(count_dict)
     Dx = discr_dispersion(count_dict)
     std = discr_standart_deviation(count_dict)
-    answer +=f'12. M(x) = {Mx}, D(x) = {Dx}, Оклонение = {std}'
+    answer +=f'M(x) = {Mx}, D(x) = {Dx}, Отклонение = {std}'
+    return text, answer
+    
+    
+def task_13():
+    chance = round(uniform(0.4, 0.8), 1)
+    while (chance ==0.5): chance = round(uniform(0.4, 0.8), 1) 
+    bad_chance = 1 - chance
+    count = randint(2, 4)
+    text = f'13. Производится стрельба по цели. Вероятность попадания при каждом выстреле равна {chance}. '\
+    f'Составить ряд распределения случайной величины Х — числа попаданий по цели при {count} выстрелах. '\
+    'Найти M(X) и D(X) этой случайной величины.\n'
+    answer = '13. \n'
+    for i in range(0, count+1):
+        answer+=f'{i}\t'
+    answer+='\n'
+    count_dict = {}
+    for i in range(0, count+1):
+        count_dict[i] = round(combination(count, i)[1] * chance**i * bad_chance ** (count-i), 4)
+        answer+=f'{count_dict[i]}\t'
+    answer+='\n'
+    Mx = discr_math_expectation(count_dict)
+    Dx = discr_dispersion(count_dict)
+    answer+=f'M(X) = {Mx}, D(X) = {Dx}'
+    return text, answer
+    
+
+def task_14():
+    count_list = [500, 1000, 2000, 4000]
+    lamb_list = [1, 2, 4]
+    rand_count = randint(0, 3)
+    rand_lamb = randint(0, 2)
+    count = count_list[rand_count]
+    lamb = lamb_list[rand_lamb]
+    chance =round(lamb/count, 5)
+    text = f'14. Радиоаппаратура состоит из {count} электроэлементов. Вероятность отказа '\
+    f'одного элемента в течение года работы равна {chance} и не зависит от состояния других '\
+    'элементов. Составить ряд распределения числа элементов, которые выйдут из строя в '\
+    'течение года работы радиоаппаратуры. Найти M(X) этой случайной величины.\n'
+    print(text)
+    answer = '14.\n'
+    for i in range(0, 3):
+        answer+=f'{i}\t'
+    answer+='...\t'
+    answer+='k\t\t...\n'
+    answer+=f'{round(math.exp(-lamb), 3)}\t'
+    for i in range(1, 3):
+        answer+=f'{round(lamb**i / math.factorial(i) * math.exp(-lamb), 3)}\t'
+    answer+='\tλ^k/k!*e^(-λ)\t...\n'
+    answer+=f'M(X) = n * p = {lamb}'
+    return text, answer
+    
+
+def task_15():
+    text = 'Независимые случайные величины X и Y заданы таблицами распределений. \n'\
+    'Найти:\n1) M(X), M(Y), D(X), D(Y);\n2) таблицы распределения случайных величин Z1 = '\
+    '2X+Y, Z2 = X*Y; \n3) M(Z1), M(Z2), D(Z1), D(Z2) непосредственно по таблицам распределений '\
+    'и на основании свойств математического ожидания и дисперсии.\n'
+    rand1 = randint(-6, -3)
+    rand2 = randint(-1, 1)
+    rand3 = randint(3, 8)
+    text+=f'X:\t{rand1}\t{rand2}\t{rand3}\n'
+    chance1 = round(uniform(0.1, 0.8), 1)
+    chance2 = round(uniform(0.1, 0.9-chance1), 1)
+    chance3 = round(1 - chance1 - chance2, 1)
+    x_dict = {}
+    place = randint(1, 3)
+    if place==1:
+        text+=f'P:\tp\t{chance1}\t{chance2}\n'
+        x_dict[rand1] = chance3
+        x_dict[rand2] = chance1
+        x_dict[rand3] = chance2
+    elif place==2:
+        text+=f'P:\t{chance1}\tp\t{chance2}\n'
+        x_dict[rand1] = chance1
+        x_dict[rand2] = chance3
+        x_dict[rand3] = chance2
+    else:
+        text+=f'P:\t{chance1}\t{chance2}\tp\n'
+        x_dict[rand1] = chance1
+        x_dict[rand2] = chance2
+        x_dict[rand3] = chance3
+    
+    y_dict = {}
+    y1 = randint(-7, 7)
+    while (y1==0): y1 = randint(-7, 7)
+    y2 = randint(-7, 7)
+    while (y1==y2 or y2==0): y2 = randint(-7, 7)
+    y_chance1 = round(uniform(0.1, 0.8), 1)
+    y_chance2 = round(1 - y_chance1, 1)
+    y_dict[y1] = y_chance1
+    y_dict[y2] = y_chance2
+    text+=f'\nY:\t{y1}\t{y2}\n'
+    text+=f'P:\t{y_chance1}\t{y_chance2}\n'
+    
+    MX = discr_math_expectation(x_dict)
+    DX = discr_dispersion(x_dict)
+    MY = discr_math_expectation(y_dict)
+    DY = discr_dispersion(y_dict)
+    
+    answer = '15.\n'
+    answer+=f'M(X) = {MX}, D(X) = {DX}, M(Y) = {MY}, D(Y) = {DY}\n'
+    Z1_dict = {}
+    for x, px in x_dict.items():
+        for y, py in y_dict.items():
+            Z1_dict[2*x+y] = round(px*py, 3)
+    answer+='Z1:\t'
+    for i in Z1_dict.keys():
+        answer+=f'{i}\t'
+    answer+='\nP:\t'
+    for val in Z1_dict.values():
+        answer+=f'{val}\t'
+    MZ1 = discr_math_expectation(Z1_dict)
+    DZ1 = discr_dispersion(Z1_dict)
+    answer+=f'\nM(Z1) = {MZ1}, D(Z1) = {DZ1}\n\n'
+    
+    Z2_dict = {}
+    for x, px in x_dict.items():
+        for y, py in y_dict.items():
+            Z2_dict[x*y] = round(px*py, 3)
+    answer+='Z2:\t'
+    for i in Z2_dict.keys():
+        answer+=f'{i}\t'
+    answer+='\nP:\t'
+    for val in Z2_dict.values():
+        answer+=f'{val}\t'
+    MZ2 = discr_math_expectation(Z2_dict)
+    DZ2 = discr_dispersion(Z2_dict)
+    answer+=f'\nM(Z2) = {MZ2}, D(Z2) = {DZ2}'
+            
     return text, answer
