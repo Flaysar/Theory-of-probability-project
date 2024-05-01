@@ -1,5 +1,6 @@
 from random import randint
 from random import uniform
+import math
 from functions import local_lapl
 from functions import integr_lapl
 from functions import transposition
@@ -275,3 +276,30 @@ def task_11():
     answer = f'{lamb}^{count} / {count}! * e^-{lamb} или {round(probability, 4)}'
     text+=answer
     return text
+
+
+def task_12():
+    chance = round(uniform(0.2, 0.4), 1)
+    bad_chance = 1 - chance
+    count = randint(3, 5)
+    text = '12. Вероятность того, что в библиотеке необходимая студенту книга свободна, '\
+    f'равна {chance}. Составить ряд распределения числа библиотек, которые посетит студент, '\
+    f'если в городе {count} библиотеки. Найти М(Х), D(X), (X), F(X) этой случайной величины. '\
+    'Построить график F(X).\n'
+    answer = ''
+    count_dict = {}
+    in_first_bib = chance
+    for i in range(1, count+1):
+        if i==count:
+            in_first_bib/= chance
+            count_dict[i]=round(in_first_bib, 3)
+        else:
+            count_dict[i]=round(in_first_bib, 3)
+        in_first_bib*=bad_chance
+    for i in count_dict.values():
+        print(i)
+    Mx = discr_math_expectation(count_dict)
+    Dx = discr_dispersion(count_dict)
+    std = discr_standart_deviation(count_dict)
+    answer +=f'12. M(x) = {Mx}, D(x) = {Dx}, Оклонение = {std}'
+    return text, answer
