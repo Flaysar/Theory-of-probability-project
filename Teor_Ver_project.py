@@ -377,4 +377,4 @@ for i in range(0, variants_count):
             doc.add_paragraph(text)
             continue
     doc.add_paragraph('')
-doc.save('вывод.docx')
+doc.save('задания.docx')
