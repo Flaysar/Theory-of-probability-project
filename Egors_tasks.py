@@ -221,6 +221,7 @@ def task_8():
            f'который оказывается в хорошем состоянии. Найти вероятность того, что это {task} {stringed[rand_inst]}.\n'
     answer = '8. '
     sum = rand1 + rand2 + rand3
+
     chance_good = round(rand1 / sum * (1 - chance1) + rand2 / sum * (1 - chance2) + rand3 / sum * (1 - chance3), 4)
     answer += f' {round((1 - chance3) * 1 / sum / chance_good, 4)}'
     return text, answer
@@ -256,6 +257,7 @@ def task_10():
     num_list = [90, 100, 110]
     num = num_list[randint(0, 2)]
     exactly = num - list([20, 25, 30])[randint(0, 2)]
+
     text = f'10. Всхожесть семян составляет {round(chance * 100)}%. Найти вероятность того, ' \
            f'что из {num} семян взойдет: \nа) ровно {exactly}; ' \
            f'\nб) не менее {exactly} и не более {exactly + 15}.\n'
@@ -264,6 +266,7 @@ def task_10():
     y = round((exactly + 15 - num * chance) / (num * chance * bad_chance), 2)
     answer += f'a) {local_lapl(x)}, б) {round(integr_lapl(y) - integr_lapl(x), 4)}'
     return text, answer
+
 
 
 def task_11():
@@ -275,17 +278,19 @@ def task_11():
            'неравномерности натяжения, неровности и других причин. Считая, что ' \
            'вероятность обрыва пряжи на каждом из веретен в течение времени Т ' \
            f'равна {chance}, найти вероятность того, что за это время произойдет {count} обрывов.\n'
-    answer = '11. '
+    answer = ''
     lamb = round(num * chance)
     probability = lamb ** count / math.factorial(count) * math.exp(-lamb)
     answer = f'{lamb}^{count} / {count}! * e^-{lamb} или {round(probability, 4)}'
-    return text, answer
+    text += answer
+    return text
 
 
 def task_12():
     chance = round(uniform(0.2, 0.4), 1)
     bad_chance = 1 - chance
     count = randint(3, 5)
+
     text = '12. Вероятность того, что в библиотеке необходимая студенту книга свободна, ' \
            f'равна {chance}. Составить ряд распределения числа библиотек, которые посетит студент, ' \
            f'если в городе {count} библиотеки. Найти М(Х), D(X), (X), F(X) этой случайной величины. ' \
@@ -343,6 +348,7 @@ def task_14():
     rand_lamb = randint(0, 2)
     count = count_list[rand_count]
     lamb = lamb_list[rand_lamb]
+
     chance = round(lamb / count, 5)
     text = f'14. Радиоаппаратура состоит из {count} электроэлементов. Вероятность отказа ' \
            f'одного элемента в течение года работы равна {chance} и не зависит от состояния других ' \
@@ -363,7 +369,7 @@ def task_14():
 
 
 def task_15():
-    text = 'Независимые случайные величины X и Y заданы таблицами распределений. \n' \
+    text = '15. Независимые случайные величины X и Y заданы таблицами распределений. \n' \
            'Найти:\n1) M(X), M(Y), D(X), D(Y);\n2) таблицы распределения случайных величин Z1 = ' \
            '2X+Y, Z2 = X*Y; \n3) M(Z1), M(Z2), D(Z1), D(Z2) непосредственно по таблицам распределений ' \
            'и на основании свойств математического ожидания и дисперсии.\n'
@@ -397,10 +403,26 @@ def task_15():
     while (y1 == 0): y1 = randint(-7, 7)
     y2 = randint(-7, 7)
     while (y1 == y2 or y2 == 0): y2 = randint(-7, 7)
+
+    text += f'P:\t{chance1}\t{chance2}\tp\n'
+    x_dict[rand1] = chance1
+    x_dict[rand2] = chance2
+    x_dict[rand3] = chance3
+
+    y_dict = {}
+    y1 = randint(-7, 7)
+    while (y1 == 0): y1 = randint(-7, 7)
+    y2 = randint(-7, 7)
+    while (y1 == y2 or y2 == 0): y2 = randint(-7, 7)
+
     y_chance1 = round(uniform(0.1, 0.8), 1)
     y_chance2 = round(1 - y_chance1, 1)
     y_dict[y1] = y_chance1
     y_dict[y2] = y_chance2
+
+    text += f'\nY:\t{y1}\t{y2}\n'
+    text += f'P:\t{y_chance1}\t{y_chance2}\n'
+
     text += f'\nY:\t{y1}\t{y2}\n'
     text += f'P:\t{y_chance1}\t{y_chance2}\n'
 
@@ -491,7 +513,7 @@ def task_16():
     return text, answer
 
 
-def task_17(): # !!!!!!!!!!!!!!!!!!!!
+def task_17():  # !!!!!!!!!!!!!!!!!!!!
     answer = '17.\n '
 
     text = '17. Дана функция распределения f(x) непрерывной случайной величины X.\n' \
@@ -501,37 +523,37 @@ def task_17(): # !!!!!!!!!!!!!!!!!!!!
 
     answer += 'a = 2\n\t |\t0, x <= 0;\nF(x)=|\te^(-x^2)+1, x > 0;\n'
 
-
     return text, answer
+
 
 def task_18():
     answer = '18.\n '
     alfa = randint(-3, 0)
     beta = randint(1, 3)
-    text = '18. 1) проверить свойство  ∫( f(x)dx ) = 1;\n'\
-        '2) построить график f(x);\n3) найти функцию распределения F(x);\n'\
-        '4) найти Р(α < X < β) для данных α, β;\n5) найти М(Х), D(X), σ(X).\n'
+    text = '18. 1) проверить свойство  ∫( f(x)dx ) = 1;\n' \
+           '2) построить график f(x);\n3) найти функцию распределения F(x);\n' \
+           '4) найти Р(α < X < β) для данных α, β;\n5) найти М(Х), D(X), σ(X).\n'
     text += '\t |\t0, x <= -1;\n\t |\t1/4 * (x+1), -1 < x <= 1;\nf(x)=|\t1/4 * (3-x), 1 < x <= 3;\n\t |\t0, x>3;\n'
     text += f'α = {alfa}, β = {beta}\n'
 
-    answer += '\t |\t0, x <= -1;\n\t |\t1/4 * (x^2/2 + x), -1 < x <= 1;\nF(x)=|'\
-    '\t1/4 * (3x - x^2/2), 1 < x <= 3;\n\t |\t1, x>3;\n'
-    num = round(1/4 * (3*beta - beta**2/2) - 1/4 * (3 - 1/2), 3)
-    if alfa!=0:
-        num+= round(1/4 * (1/2 + 1) - 1/4 * (1/2 - 1), 3)
+    answer += '\t |\t0, x <= -1;\n\t |\t1/4 * (x^2/2 + x), -1 < x <= 1;\nF(x)=|' \
+              '\t1/4 * (3x - x^2/2), 1 < x <= 3;\n\t |\t1, x>3;\n'
+    num = round(1 / 4 * (3 * beta - beta ** 2 / 2) - 1 / 4 * (3 - 1 / 2), 3)
+    if alfa != 0:
+        num += round(1 / 4 * (1 / 2 + 1) - 1 / 4 * (1 / 2 - 1), 3)
     else:
-        num+= round(1/4 * (1/2 + 1), 3)
+        num += round(1 / 4 * (1 / 2 + 1), 3)
     answer += f'Р(α < X < β) = P({alfa} < X < {beta}) = {num}\n'
 
-    MX = round(1/4 * (1**3/3 + 1**2/2) - 1/4 * (-1**3/3 + -1**2/2), 3)
-    MX += round(1/4 * (3*3**2/2 - 3**3/3) - 1/4 * (3*1**2/2 - 1**3/3), 3)
-    MX2 = round(1 / 4 * (1 ** 4 / 4 + 1 ** 3 / 3) - 1 / 4 * (-1 ** 4 / 34+ -1 ** 3 / 3), 3)
+    MX = round(1 / 4 * (1 ** 3 / 3 + 1 ** 2 / 2) - 1 / 4 * (-1 ** 3 / 3 + -1 ** 2 / 2), 3)
+    MX += round(1 / 4 * (3 * 3 ** 2 / 2 - 3 ** 3 / 3) - 1 / 4 * (3 * 1 ** 2 / 2 - 1 ** 3 / 3), 3)
+    MX2 = round(1 / 4 * (1 ** 4 / 4 + 1 ** 3 / 3) - 1 / 4 * (-1 ** 4 / 34 + -1 ** 3 / 3), 3)
     MX2 += round(1 / 4 * (3 * 3 ** 3 / 3 - 3 ** 4 / 4) - 1 / 4 * (3 * 1 ** 3 / 3 - 1 ** 4 / 4), 3)
-    DX = round(MX2 - MX**2, 3)
+    DX = round(MX2 - MX ** 2, 3)
     std = round(math.sqrt((DX)), 3)
-    answer+=f'M(X) = {MX}, D(X) = {DX}, Отклонение = {std}'
+    answer += f'M(X) = {MX}, D(X) = {DX}, Отклонение = {std}'
 
     return text, answer
 
-t, a = task_18()
-print(t, a)
+
+
