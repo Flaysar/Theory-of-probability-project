@@ -625,5 +625,3 @@ def task_20():
     answer += f'm = {m}, σ = {sigma}, D = {num * sigma * sigma}, √D = {root_D}, P(X > {need}) = P({need} < X < +∞) = {P}\n'
     return text, answer
 
-a = task_15()[1]
-print(a)
