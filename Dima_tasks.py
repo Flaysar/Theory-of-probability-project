@@ -14,7 +14,6 @@ from functions import discr_dispersion
 from functions import discr_standart_deviation
 
 
-# 1-ое задание
 def task_1():
     answer = '1. \n'
     text = "1. Студент забыл четырехзначный идентификационный код своей кредитной карточки." \
@@ -23,18 +22,18 @@ def task_1():
     if k == 1:
         text += "a)Все цифры кода разные\n"
         otvet1 = 1 / (10 * 9 * 8 * 7)
-        answer += f" {otvet1}, 1/{10 * 9 * 8 * 7}\n"
+        answer += f"а) {otvet1}, 1/{10 * 9 * 8 * 7}\n"
     if k == 2:
         text += "a)Цифры в коде могут повторяться\n"
         otvet1 = 1 / 10000
-        answer+= f" {otvet1}, 1/10000\n"
+        answer+= f"а) {otvet1}, 1/10000\n"
     chisl1 = randint(0, 9)
     chisl2 = randint(0, 9)
     while chisl1 == chisl2:
         chisl2 = randint(0, 9)
     text += f"б) код не содержит цифр {chisl1} и {chisl2}?\n"
     otvet2 = 1 / (8 * 8 * 8 * 8)
-    answer += f" {otvet2}, 1/{8 * 8 * 8 * 8}\n"
+    answer += f"б) {otvet2}, 1/{8 * 8 * 8 * 8}\n"
     return text, answer
 
 
@@ -58,7 +57,7 @@ def task_2():
         i2 -= 1
         i1 -= 1
     otvet *= 1 / i3
-    answer += f"  а) {otvet * otkrito}\n"
+    answer += f"а) {otvet * otkrito}\n"
 
     text += f"б) Все {otkrito} с книгами\n"
     answer += f"б) {combination(posilki - zima - 1, otkrito)[1]}/{combination(posilki, otkrito)[1]}\n"
@@ -75,10 +74,10 @@ def task_3():
     k = randint(1, 2)
     if k == 1:
         text += "а) оба игрока ответят правильно;\n"
-        answer+= f"  а){round(c1 * c2 * 100) / 100}\n"
+        answer+= f"а) {round(c1 * c2 * 100) / 100}\n"
     if k == 2:
         text += "а) оба игрока ответят неправильно;\n"
-        answer += f"  а){round((1 - c1) * (1 - c2) * 100) / 100}\n"
+        answer += f"а) {round((1 - c1) * (1 - c2) * 100) / 100}\n"
     k = randint(1, 2)
     if k == 1:
         text += "б) хотя бы один из них даст правильный ответ;\n"
@@ -113,7 +112,7 @@ def task_4():
            'Какова вероятность того, что первый гроссмейстер выиграет матч?\n'
 
     otvet = s1 * s1 + s1 * s3 * 2
-    answer += f'  {round(otvet, 3)}\n'
+    answer += f'{round(otvet, 3)}\n'
     return text, answer
 
 
@@ -130,7 +129,7 @@ def task_5():
     vse = orange + purple + green
     otvet = (orange / vse) * (purple / (vse - 1)) * (green / (vse - 2))
 
-    answer += f' ({orange}/{vse})*({purple}/{vse - 1})*({green}/{vse - 2}),{otvet}\n'
+    answer += f'({orange}/{vse})*({purple}/{vse - 1})*({green}/{vse - 2}),{otvet}\n'
     return text, answer
 
 
@@ -146,7 +145,7 @@ def task_6():
            'Найти вероятность того, что одиннадцатиметровый удар будет реализован, если пенальтиста выбирают по жребию.\n'
     otvet = (1 / 3) * Ivanov + (1 / 3) * Sidorov + (1 / 3) * Petrov
     otvet = round(otvet * 100) / 100
-    answer += f'  {otvet}\n'
+    answer += f'{otvet}\n'
     return text, answer
 
 
@@ -164,7 +163,7 @@ def task_7():
            'Звукосниматель наугад поставили на пластинку, музыка звучала чисто. Какова вероятность, что это была соната?\n'
 
     otvet = (1 / 4) * (1 - k2)
-    answer += f'  {otvet}\n'
+    answer += f'{otvet}\n'
     return text, answer
 
 
@@ -180,7 +179,7 @@ def task_8():
     k = n / 100 * proc
     p /= 100
     otvet = combination(n, int(k))[1] * p ** k * (1 - p) ** (n - k)
-    answer += f'  {round(otvet,5)}\n'
+    answer += f'{round(otvet,5)}\n'
 
     return text, answer
 
@@ -199,7 +198,7 @@ def task_9():
     x=(k1-n*p)/(n*p*(1-p))
     y=(k1+10-n*p)/(n*p*(1-p))
     otvet = local_lapl(x)
-    answer += f'  a) {otvet}\n'
+    answer += f'a) {otvet}\n'
     answer += f'б) {round(integr_lapl(round(y,2))-integr_lapl(round(x,2)),5)}\n'
     return text, answer
 
@@ -213,7 +212,7 @@ def task_10():
     text = f'10. Вероятность сбоя в работе АТС при каждом вызове равна {p}.' \
            f' Определить вероятность того, что при поступлении {n} вызовов произойдет {k} сбоев.\n'
     otvet = combination(n, k)[1] * p ** k * (1 - p) ** (n - k)
-    answer += f' {round(otvet,5)}\n'
+    answer += f'{round(otvet,5)}\n'
     return text, answer
 
 
@@ -266,7 +265,7 @@ def task_12():
         dictinary = {0: P0, 1: P1, 2: P2}
         M = discr_math_expectation(dictinary)
         D = discr_dispersion(dictinary)
-        answer += f"  M(x)= {M}, D(x)={D}"
+        answer += f"M(x)= {M}, D(x)={D}"
     else:
         P0 = combination(standart, 0)[1] * combination(unstandart, 3)[1] / combination(10, 3)[1]
         P1 = combination(standart, 1)[1] * combination(unstandart, 2)[1] / combination(10, 3)[1]
@@ -275,7 +274,7 @@ def task_12():
         dictinary = {0: P0, 1: P1, 2: P2, 3: P3}
         M = discr_math_expectation(dictinary)
         D = discr_dispersion(dictinary)
-        answer += f"  M(x)= {M}, D(x)={D}\n"
+        answer += f"M(x)= {M}, D(x)={D}\n"
     return text, answer
 
 
@@ -292,7 +291,7 @@ def task_13():
         P = combination(n, i)[1] * k ** i * (1 - k) ** (n - i)
         answer += f'{P}\n'
     answer += '...\n'
-    answer += f"  M(x)={round(M, 5)}\n"
+    answer += f"M(x)={round(M, 5)}\n"
     return text, answer
 
 
@@ -374,7 +373,7 @@ def task_16():
            '3) найти функцию распределения F(x);\n' \
            '4) найти Р(a<= Х <=b) для данных a,b;\n' \
            '5) найти М(Х), D(X), σ(X).\n' \
-           'f(x)=\n' \
+           '\nf(x)=\n' \
            '{0, x<=0\n' \
            '(2/15)x, 0<x<=3\n' \
            '-(1/5)x+1, 3<x<=5\n' \
@@ -384,27 +383,27 @@ def task_16():
     otvet = ((1 / 15) * 3 ** 2 - (1 / 15) * a ** 2) + ((-b ** 2 / 10) + b - (-3 ** 2 / 10) + 3)
 
     answer +='1) Свойство выполняется;\n' \
-            '2)F(X)=\n' \
+            '\n2)F(X)=\n' \
             '{0, x<=0\n' \
             '5x^2/24, 0<x<=3\n' \
             '-x^2/10+x-21/10, 3<x<=5\n' \
             '1, x>5}\n' \
-            f'3) Р(a<= Х <=b)={round(otvet,4)}\n' \
-            '4)M(X)=40/15\n' \
+            f'\n3) Р(a<= Х <=b)={round(otvet,4)}\n' \
+            '\n4)M(X)=40/15\n' \
             'D(X)=19/18\n' \
             'σ=sqrt(38)/6\n'
 
     return text, answer
 
 def task_17():
-    answer = '17.\n '
+    answer = '17.\n'
     x=randint(1450,1550)
     text=f'17. Автомат вытачивает стальные оси. Стандартная длина оси {x} мм. ' \
          f'Фактически же длина оси X является нормальной случайной величиной (m = {x} мм). ' \
          'При проверке большой партии изготовленных осей выяснилось,'\
          f'что {x-18} <= X <= {x+18} (мм). Какова вероятность того, что длина наугад взятой оси меньше {x-5} мм?'
     otvet=integr_lapl(round(x-5/18,2)-integr_lapl(round(-5/18,2)))
-    answer+=f'  {otvet}\n'
+    answer+=f'{otvet}\n'
     return text, answer
 
 def task_18():
@@ -415,22 +414,22 @@ def task_18():
          'Указать плотность вероятности f(t) случайной величины T, ' \
          'найти среднее время безотказной работы элемента. ' \
          f'С какой вероятностью элемент проработает безотказно не менее {x} ч?'
-    answer+=f'  Cреднее время безотказной работы элемента = {round(1/l,2)},\n '
+    answer+=f'Cреднее время безотказной работы элемента = {round(1/l,2)},\n '
     answer+=f'Вероятность проработает элемент безотказно не менее {x} = {round(math.exp(-l*x),5)}\n'
 
     return text, answer
 
 def task_19():
-    answer = '19.\n '
+    answer = '19.\n'
 
     m=randint(70,100)
     a=randint(10,30)
 
-    text=f'19.Время формирования грузового поезда есть нормальная случайная величина с параметрами: m = {m} мин;' \
+    text=f'19. Время формирования грузового поезда есть нормальная случайная величина с параметрами: m = {m} мин;' \
          f'σ = {a} мин. Какова вероятность того, что на формирование очередного поезда потребуется более двух часов?'
 
     z=(120-m)/a
-    answer+=f' {round(1-integr_lapl(round(z,2)),5)}\n'
+    answer+=f'{round(1-integr_lapl(round(z,2)),5)}\n'
     return text,answer
 
 def task_20():
@@ -439,7 +438,7 @@ def task_20():
     a=randint(6950,7050)
     b=randint(7950,8050)
 
-    text='Измерительная система состоит из 750 идентичных датчиков. ' \
+    text='20. Измерительная система состоит из 750 идентичных датчиков. ' \
          f'Время безотказной работы i-го датчика Ti распределено экспоненциально (параметр λ =0,1 одинаковдля всех датчиков) ' \
          'и измеряется в часах. В случае отказа i-го датчика происходит мгновенное и безотказное переключение на следующий. ' \
          'Если отказали все датчики, то измерительная система выходит из строя. ' \
@@ -450,7 +449,5 @@ def task_20():
     x2=(b-750*(1/0.1))/math.sqrt(750*(1/0.1)**2)
 
     otvet=integr_lapl(round(x2,2))-integr_lapl(round(x1,2))
-    answer+=f'  {round(otvet,5)}\n'
+    answer+=f'{round(otvet,5)}\n'
     return text,answer
-
-
