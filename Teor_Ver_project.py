@@ -1,7 +1,5 @@
 from random import randint
 from random import uniform
-import docx
-import codecs
 # inuform(начало, конец) - возрщает рандомное вещественное в диапазоне включая концы
 # randint(начало, конец) - возрщает рандомное целое в диапазоне включая концы
 
@@ -11,19 +9,76 @@ import Egors_tasks
 import Magas_tasks
 import Dima_tasks
 
-N = 20  # сколько всего задач в варианте, исправить если что
-tasks_num_list = set()  # множество заданий, которые нужно сгенерировать
-select = input('Введите номера заданий (all для выбора всех) ')
-if select == 'all':
-    for i in range(1, N + 1):
-        tasks_num_list.append(i)  # запишем все номеры
-else:
-    tasks_num_list = select.split(' ')  # это даст список из char символов строки, которые разделены пробелом
-    tasks_num_list = [int(i) for i in tasks_num_list]  # переделает все char значения в списке в int-вые
+from tkinter import *
+from tkinter.ttk import Checkbutton
 
-variants_count = int(input('введите количество вариантов '))  # количество вариантов
-tasks = open('задания.doc', 'w')
-answers = open('ответы.doc', 'w')
+
+def clicked():
+    global variants_count
+    global tasks_num_list
+    if txt.get() != '':
+        variants_count = int(txt.get())
+    else:
+        variants_count = 1
+    if chk_all.get():
+        for i in range(1, 21):
+            tasks_num_list.append(i)
+    else:
+        number = 1
+        for i in check_list:
+            if i.get():
+                tasks_num_list.append(number)
+            number += 1
+
+
+variants_count = 0
+tasks_num_list = []  # множество заданий, которые нужно сгенерировать
+
+window = Tk()
+window.geometry('400x300')
+
+window.title('Окно выбора')
+count_var_label = Label(window, text='Введите количество вариантов: ', )
+count_var_label.grid(column=0, row=0)
+
+txt = Entry(window, width=10)
+txt.grid(column=1, row=0)
+txt.focus()
+
+tasks_label = Label(window, text='Выберите номера заданий:')
+tasks_label.grid(column=0, row=1)
+
+chk_all = BooleanVar()
+chk_all.set(False)  # задайте проверку состояния чекбокса
+all_tasks_check = Checkbutton(window, text='Все задания', var=chk_all)
+all_tasks_check.grid(column=0, row=2)
+
+check_list = []
+for i in range(0, 20):
+    check_list.append(BooleanVar())
+    check_list[i].set(False)
+
+for i in range(0, 20):
+    if i < 9:
+        task_check = Checkbutton(window, text=f'0{i + 1}', var=check_list[i])
+    else:
+        task_check = Checkbutton(window, text=f'{i + 1}', var=check_list[i])
+    if i < 7:
+        task_check.grid(column=0, row=i + 3)
+    elif i < 14:
+        task_check.grid(column=1, row=i % 7 + 3, ipadx=30, pady=0)
+    else:
+        task_check.grid(column=2, row=i % 14 + 3, ipadx=10, pady=0)
+
+btn = Button(window, text='Создать документ', bg='green', fg='white', command=clicked)
+btn.grid(column=0, row=15)
+
+window.mainloop()
+
+N = 20  # сколько всего задач в варианте
+
+tasks = open('задания.doc', 'w', encoding='utf-8')
+answers = open('ответы.doc', 'w', encoding='utf-8')
 for i in range(0, variants_count):
     tasks.write(f'ВАРИАНТ {i + 1}\n')
     answers.write(f'ВАРИАНТ {i + 1}\n')
