@@ -1,5 +1,4 @@
-from random import randint
-from random import uniform
+from random import randint, uniform, randrange
 import math
 from functions import local_lapl
 from functions import integr_lapl
@@ -45,14 +44,14 @@ def task_1():
     type = randint(0, 1)
     if type == 0:
         text += f'б) Содержит цифру {randint(0, 9)}\n'
-        text += answer + f', б) {n}*10^{n - 1} или {n * 10 ** (n - 1)}'
+        answer += f', б) {n}*10^{n - 1} или {n * 10 ** (n - 1)}'
     else:
         rand1 = randint(0, 9)
         rand2 = randint(0, 9)
         while (rand1 == rand2): rand2 = randint(0, 9)
         place = randint(1, n)
         text += f'б) На {place}-ом месте содержит цифру {rand1} или {rand2}\n'
-        answer += f', б) 2*10^{n - 1} или {2 * 10 ** (n - 1)}'
+        answer += f', б) 2*10^{n - 1} или {2 * 10 ** (n - 1)}\n'
     return text, answer
 
 
@@ -76,7 +75,7 @@ def task_2():
     rand2 = songs_need - 2 - rand1
     text += f'б) не менее {rand2} песен о любви и не менее {rand1} песен о животных.\n'
     answer += f', б) ( C({love_songs} по {rand2}) * C({anim_songs} по {rand1}) * ' \
-              f'C({love_songs * 2 - rand1 - rand2} по {songs_need - rand1 - rand2}) ) / C({love_songs * 2} по {songs_need})'
+              f'C({love_songs * 2 - rand1 - rand2} по {songs_need - rand1 - rand2}) ) / C({love_songs * 2} по {songs_need})\n'
     return text, answer
 
 
@@ -88,12 +87,12 @@ def task_2():
 #     return text
 
 
-def task_4():
-    answer = '4. '
+def task_3():
+    answer = '3. '
     rand1 = round(uniform(0.1, 0.7), 1)
     rand2 = round(uniform(0.1, 0.7), 1)
     while (rand1 == rand2): rand2 = round(uniform(0, 9), 1)
-    text = f'4. Контролер заметила, что вероятность встретить в трамвае мэра города равна {rand1}, ' \
+    text = f'3. Контролер заметила, что вероятность встретить в трамвае мэра города равна {rand1}, ' \
            f'а местную знаменитость — фокусника — {rand2}. Чему равна вероятность того, что завтра ' \
            'утром контролер проверит билет:\n'
     if randint(0, 1) == 0:
@@ -105,12 +104,12 @@ def task_4():
     text += 'б) и у мэра, и у фокусника;\n'
     answer += f', б) {round(rand1 * rand2, 3)}'
     text += 'в) Хотя бы у одного;\n'
-    answer += f', в) {round(rand1 * rand2 + rand1 * (1 - rand2) + rand2 * (1 - rand1), 3)}'
+    answer += f', в) {round(rand1 * rand2 + rand1 * (1 - rand2) + rand2 * (1 - rand1), 3)}\n'
     return text, answer
 
 
-def task_5():
-    answer = '5. '
+def task_4():
+    answer = '4. '
     rand1 = round(uniform(0.4, 0.7), 1)
     rand2 = round(uniform(0.1, min(0.4, 1 - rand1)), 1)
     concerts = randint(4, 5)
@@ -118,7 +117,7 @@ def task_5():
     if concerts == 4: termination = 'концерта'
     city_list = ('Париже', 'Лондоне', 'Будапеште', 'Праге')
     rand_city = randint(0, 3)
-    text = f'5. Знаменитая эстрадная певица с вероятностью {rand1} ' \
+    text = f'4. Знаменитая эстрадная певица с вероятностью {rand1} ' \
            f'дает концерты у себя на родине, с вероятностью {rand2} — в {city_list[rand_city]}. ' \
            f'Этой осенью она дала {concerts} {termination}. ' \
            f'Какова вероятность того, что концертов в {city_list[rand_city]} было больше?\n'
@@ -134,13 +133,14 @@ def task_5():
                        combination(concerts, 2)[1] * rand2 ** 2 * (1 - rand2 - rand1) ** (concerts - 3) * rand1 * \
                        combination(concerts - 2, 1)[1]
     sum = round(sum, 4)
+    answer += f'{sum}\n'
     return text, answer
 
 
-def task_6():
+def task_5():
     type = randint(0, 2)
     task = ''
-    answer = '6. '
+    answer = '5. '
     if type == 0:
         task = 'оба кубика зеленые'
     elif type == 1:
@@ -149,27 +149,27 @@ def task_6():
         task = 'один кубик зеленый, другой - розовый'
     green = randint(5, 7)
     purple = randint(2, 4)
-    text = f'6. В коробке находится {purple} розовых и {green} зеленых кубиков. Из коробки наугад достают два кубика. ' \
+    text = f'5. В коробке находится {purple} розовых и {green} зеленых кубиков. Из коробки наугад достают два кубика. ' \
            f'Найти вероятность того, что {task} (извлеченный первый кубик обратно не положили).\n'
     if type == 0:
         answer += f'{green}/{green + purple} * {green - 1}/{green + purple - 1} или ' \
-                  f'{round(green / (green + purple) * (green - 1) / (green + purple - 1), 4)} '
+                  f'{round(green / (green + purple) * (green - 1) / (green + purple - 1), 4)} \n'
     elif type == 1:
         answer += f'{purple}/{green + purple} * {purple - 1}/{green + purple - 1} или ' \
-                  f'{round(purple / (green + purple) * (purple - 1) / (green + purple - 1), 4)} '
+                  f'{round(purple / (green + purple) * (purple - 1) / (green + purple - 1), 4)}\n '
     else:
         answer += f'{purple}/{green + purple} * {green}/{green + purple - 1} + ' \
                   f'{green}/{green + purple} * {purple}/{green + purple - 1} или ' \
-                  f'{round((purple / (green + purple) * green / (green + purple - 1) * 2), 4)}'
+                  f'{round((purple / (green + purple) * green / (green + purple - 1) * 2), 4)}\n'
     return text, answer
 
 
-def task_7():
-    answer = '7. '
+def task_6():
+    answer = '6. '
     rand1 = randint(1, 3) * 10
     rand2 = randint(2, 4) * 10
     rand3 = (100 - rand1 - rand2)
-    while rand1 == rand2: rand2 = randint(2, 4) * 10
+    while (rand1 == rand2): rand2 = randint(2, 4) * 10
     chance1 = round(uniform(0.4, 0.6), 1)
     chance2 = round(uniform(0.5, 0.8), 1)
     while chance1 == chance2: chance2 = round(uniform(0.5, 0.8), 1)
@@ -177,16 +177,16 @@ def task_7():
     if chance2 == 0.8: chance3 = 0.9
     formulation = 'одном случае'
     if chance3 == 0.8: formulation = 'двух случаях'
-    text = f'7. Для защиты от грабителей {rand1}% квартир оборудованы пожарной сиреной, в {rand2}% квартир ' \
+    text = f'6. Для защиты от грабителей {rand1}% квартир оборудованы пожарной сиреной, в {rand2}% квартир ' \
            'в дверях заложены пиропатроны, а в остальных квартирах содержатся гремучие змеи. Пожарная сирена ' \
            f'отпугивает грабителей с вероятностью {chance1}, взрыв пиропатрона — с вероятностью {chance2}, а ограбить ' \
            f'квартиру с гремучими змеями удается лишь в {formulation} из десяти. Найти вероятность того, что ' \
            'грабителям удастся сделать свое черное дело, если квартира выбирается наугад.\n'
-    answer += f'{round(rand1 / 100 * (1 - chance1) + rand2 / 100 * (1 - chance2) + rand3 / 100 * (1 - chance3), 4)}'
+    answer += f'{round(rand1 / 100 * (1 - chance1) + rand2 / 100 * (1 - chance2) + rand3 / 100 * (1 - chance3), 4)}\n'
     return text, answer
 
 
-def task_8():
+def task_7():
     rand1 = randint(2, 5)
     rand2 = randint(2, 5)
     while rand1 == rand2: rand2 = randint(2, 5)
@@ -214,20 +214,20 @@ def task_8():
     rand_inst = randint(0, rand3 - 1)
     task = 'была'
     if rand_inst == 3: task = 'был'
-    text = f'3. В студенческом оркестре {rand1} духовых инструмента ({wind_str}), {rand2} ударных ({percussion_str}) ' \
+    text = f'7. В студенческом оркестре {rand1} духовых инструмента ({wind_str}), {rand2} ударных ({percussion_str}) ' \
            f'и {rand3} струнных ({stringed_str}). В комнате, где хранятся музыкальные инструменты, сыро, и ' \
            f'вероятность того, что инструмент будет расстроен, для духовых инструментов равна {chance1}, для ' \
            f'ударных — {chance2}, для струнных — {chance3}. Перед концертом настройщик берет наугад инструмент, ' \
            f'который оказывается в хорошем состоянии. Найти вероятность того, что это {task} {stringed[rand_inst]}.\n'
-    answer = '8. '
+    answer = '7. '
     sum = rand1 + rand2 + rand3
 
     chance_good = round(rand1 / sum * (1 - chance1) + rand2 / sum * (1 - chance2) + rand3 / sum * (1 - chance3), 4)
-    answer += f' {round((1 - chance3) * 1 / sum / chance_good, 4)}'
+    answer += f' {round((1 - chance3) * 1 / sum / chance_good, 4)}\n'
     return text, answer
 
 
-def task_9():
+def task_8():
     chance = round(uniform(0.7, 0.9), 1)
     bad_chance = round(1 - chance, 1)
     num = randint(8, 10)
@@ -238,19 +238,19 @@ def task_9():
     elif var == 2:
         type = f'все будут успешны'
 
-    text = '9. Вероятность успешного запуска управляемого снаряда ' \
+    text = '8. Вероятность успешного запуска управляемого снаряда ' \
            f'равна {chance}. Найти вероятность того, что из {num} запусков ' \
            f'{type}.\n'
-    answer = '9. '
+    answer = '8. '
     if var == 0 or var == 1:
         answer += f'{chance}^{num} + C({num} по {num - 1}) * {chance}^{num - 1} * {bad_chance} или ' \
-                  f'{round(chance ** num + combination(num, num - 1)[1] * chance ** (num - 1) * bad_chance, 4)}'
+                  f'{round(chance ** num + combination(num, num - 1)[1] * chance ** (num - 1) * bad_chance, 4)}\n'
     elif var == 2:
-        answer += f'{chance}^{num} или {round(chance ** num, 4)}'
+        answer += f'{chance}^{num} или {round(chance ** num, 4)}\n'
     return text, answer
 
 
-def task_10():
+def task_9():
     chance_list = [0.75, 0.8, 0.85, 0.9]
     chance = chance_list[randint(0, 3)]
     bad_chance = round(1 - chance, 2)
@@ -258,44 +258,43 @@ def task_10():
     num = num_list[randint(0, 2)]
     exactly = num - list([20, 25, 30])[randint(0, 2)]
 
-    text = f'10. Всхожесть семян составляет {round(chance * 100)}%. Найти вероятность того, ' \
+    text = f'9. Всхожесть семян составляет {round(chance * 100)}%. Найти вероятность того, ' \
            f'что из {num} семян взойдет: \nа) ровно {exactly}; ' \
            f'\nб) не менее {exactly} и не более {exactly + 15}.\n'
-    answer = '10. '
+    answer = '9. '
     x = round((exactly - num * chance) / (num * chance * bad_chance), 2)
     y = round((exactly + 15 - num * chance) / (num * chance * bad_chance), 2)
-    answer += f'a) {local_lapl(x)}, б) {round(integr_lapl(y) - integr_lapl(x), 4)}'
+    answer += f'a) {local_lapl(x)}, б) {round(integr_lapl(y) - integr_lapl(x), 4)}\n'
     return text, answer
 
 
-
-def task_11():
+def task_10():
     num = list([600, 700, 800, 900])[randint(0, 3)]
     chance = round(uniform(0.004, 0.01), 3)
     count = randint(8, 12)
-    text = f'11. На прядильной фабрике работница обслуживает {num} веретен. ' \
+    text = f'10. На прядильной фабрике работница обслуживает {num} веретен. ' \
            'При вращении веретена пряжа рвется в случайные моменты времени из-за ' \
            'неравномерности натяжения, неровности и других причин. Считая, что ' \
            'вероятность обрыва пряжи на каждом из веретен в течение времени Т ' \
            f'равна {chance}, найти вероятность того, что за это время произойдет {count} обрывов.\n'
-    answer = ''
+    answer = '10. '
     lamb = round(num * chance)
     probability = lamb ** count / math.factorial(count) * math.exp(-lamb)
-    answer = f'{lamb}^{count} / {count}! * e^-{lamb} или {round(probability, 4)}'
-    text += answer
-    return text
+    answer = f'{lamb}^{count} / {count}! * e^-{lamb} или {round(probability, 4)}\n'
+    return text, answer
 
 
-def task_12():
+def task_11():
+    # Reduced function name from task_12 to task_11
     chance = round(uniform(0.2, 0.4), 1)
     bad_chance = 1 - chance
     count = randint(3, 5)
 
-    text = '12. Вероятность того, что в библиотеке необходимая студенту книга свободна, ' \
+    text = '11. Вероятность того, что в библиотеке необходимая студенту книга свободна, ' \
            f'равна {chance}. Составить ряд распределения числа библиотек, которые посетит студент, ' \
            f'если в городе {count} библиотеки. Найти М(Х), D(X), (X), F(X) этой случайной величины. ' \
            'Построить график F(X).\n'
-    answer = '12.\n '
+    answer = '11.\n '
     for i in range(1, count + 1):
         answer += f'{i}\t'
     answer += '\n'
@@ -314,19 +313,20 @@ def task_12():
     Mx = discr_math_expectation(count_dict)
     Dx = discr_dispersion(count_dict)
     std = discr_standart_deviation(count_dict)
-    answer += f'M(x) = {Mx}, D(x) = {Dx}, Отклонение = {std}'
+    answer += f'M(x) = {Mx}, D(x) = {Dx}, Отклонение = {std}\n'
     return text, answer
 
 
-def task_13():
+def task_12():
+    # Reduced function name from task_13 to task_12
     chance = round(uniform(0.4, 0.8), 1)
     while (chance == 0.5): chance = round(uniform(0.4, 0.8), 1)
     bad_chance = 1 - chance
     count = randint(2, 4)
-    text = f'13. Производится стрельба по цели. Вероятность попадания при каждом выстреле равна {chance}. ' \
+    text = f'12. Производится стрельба по цели. Вероятность попадания при каждом выстреле равна {chance}. ' \
            f'Составить ряд распределения случайной величины Х — числа попаданий по цели при {count} выстрелах. ' \
            'Найти M(X) и D(X) этой случайной величины.\n'
-    answer = '13. \n'
+    answer = '12. \n'
     for i in range(0, count + 1):
         answer += f'{i}\t'
     answer += '\n'
@@ -337,11 +337,11 @@ def task_13():
     answer += '\n'
     Mx = discr_math_expectation(count_dict)
     Dx = discr_dispersion(count_dict)
-    answer += f'M(X) = {Mx}, D(X) = {Dx}'
+    answer += f'M(X) = {Mx}, D(X) = {Dx}\n'
     return text, answer
 
 
-def task_14():
+def task_13():
     count_list = [500, 1000, 2000, 4000]
     lamb_list = [1, 2, 4]
     rand_count = randint(0, 3)
@@ -350,12 +350,11 @@ def task_14():
     lamb = lamb_list[rand_lamb]
 
     chance = round(lamb / count, 5)
-    text = f'14. Радиоаппаратура состоит из {count} электроэлементов. Вероятность отказа ' \
+    text = f'13. Радиоаппаратура состоит из {count} электроэлементов. Вероятность отказа ' \
            f'одного элемента в течение года работы равна {chance} и не зависит от состояния других ' \
            'элементов. Составить ряд распределения числа элементов, которые выйдут из строя в ' \
            'течение года работы радиоаппаратуры. Найти M(X) этой случайной величины.\n'
-    print(text)
-    answer = '14.\n'
+    answer = '13.\n'
     for i in range(0, 3):
         answer += f'{i}\t'
     answer += '...\t'
@@ -364,12 +363,12 @@ def task_14():
     for i in range(1, 3):
         answer += f'{round(lamb ** i / math.factorial(i) * math.exp(-lamb), 3)}\t'
     answer += '\tλ^k/k!*e^(-λ)\t...\n'
-    answer += f'M(X) = n * p = {lamb}'
+    answer += f'M(X) = n * p = {lamb}\n'
     return text, answer
 
 
-def task_15():
-    text = '15. Независимые случайные величины X и Y заданы таблицами распределений. \n' \
+def task_14():
+    text = '14. Независимые случайные величины X и Y заданы таблицами распределений. \n' \
            'Найти:\n1) M(X), M(Y), D(X), D(Y);\n2) таблицы распределения случайных величин Z1 = ' \
            '2X+Y, Z2 = X*Y; \n3) M(Z1), M(Z2), D(Z1), D(Z2) непосредственно по таблицам распределений ' \
            'и на основании свойств математического ожидания и дисперсии.\n'
@@ -431,7 +430,7 @@ def task_15():
     MY = discr_math_expectation(y_dict)
     DY = discr_dispersion(y_dict)
 
-    answer = '15.\n'
+    answer = '14.\n'
     answer += f'M(X) = {MX}, D(X) = {DX}, M(Y) = {MY}, D(Y) = {DY}\n'
     Z1_dict = {}
     for x, px in x_dict.items():
@@ -459,16 +458,16 @@ def task_15():
         answer += f'{val}\t'
     MZ2 = discr_math_expectation(Z2_dict)
     DZ2 = discr_dispersion(Z2_dict)
-    answer += f'\nM(Z2) = {MZ2}, D(Z2) = {DZ2}'
+    answer += f'\nM(Z2) = {MZ2}, D(Z2) = {DZ2}\n'
 
     return text, answer
 
 
-def task_16():
-    answer = '16.\n '
+def task_15():
+    answer = '15.\n '
     type = randint(1, 2)
     if type == 1:
-        text = '16. Дана функция распределения F(x) непрерывной случайной величины X.\n' \
+        text = '15. Дана функция распределения F(x) непрерывной случайной величины X.\n' \
                'Требуется:\n1) найти плотность вероятности f(x);\n2) построить графики F(x) и f(x);\n' \
                '3) найти M(X), D(X), (Х);\n4) найти Р(α < X < β) для данных α, β\n'
         text += '\t |\t0, x <= π/6;\nF(x)=|\t-cos3x, π/6 < x <= π/3;\n\t |\t1, x > π/3;\n'
@@ -489,7 +488,7 @@ def task_16():
         else:
             answer += f'P(α < x < β) = P({alfa} < x < {beta}) = 1 - √2/2'
     else:
-        text = '16. Дана функция распределения F(x) непрерывной случайной величины X.\n' \
+        text = '15. Дана функция распределения F(x) непрерывной случайной величины X.\n' \
                'Требуется:\n1) найти плотность вероятности f(x);\n2) построить графики F(x) и f(x);\n' \
                '3) найти M(X), D(X), (Х);\n4) найти Р(α < X < β) для данных α, β\n'
         text += '\t |\t0, x <= 7π/6;\nF(x)=|\tcos3x, 7π/6 < x <= 4π/3;\n\t |\t1, x > 4π/3;\n'
@@ -506,14 +505,14 @@ def task_16():
         answer += 'M(X) = (4π-1)/3, M(X^2) = (16π^2-7π-2)/9, \nD(X) = (16π^2-7π-2)/9 - (4π-1)/3 = (16π^2-19π+1)/9, ' \
                   'Отклонение = √(16π^2-19π+1)/3\n'
         if alfa_type == 1:
-            answer += f'P(α < x < β) = P({alfa} < x < {beta}) = √2/2'
+            answer += f'P(α < x < β) = P({alfa} < x < {beta}) = √2/2\n'
         else:
-            answer += f'P(α < x < β) = P({alfa} < x < {beta}) = 1 - √2/2'
+            answer += f'P(α < x < β) = P({alfa} < x < {beta}) = 1 - √2/2\n'
 
     return text, answer
 
 
-# def task_17():  # !!!!!!!!!!!!!!!!!!!!
+# def task_17():
 #     answer = '17.\n '
 #
 #     text = '17. Дана функция распределения f(x) непрерывной случайной величины X.\n' \
@@ -526,11 +525,11 @@ def task_16():
 #     return text, answer
 
 
-def task_18():
-    answer = '18.\n '
+def task_16():
+    answer = '16.\n '
     alfa = randint(-3, 0)
     beta = randint(1, 3)
-    text = '18. 1) проверить свойство  ∫( f(x)dx ) = 1;\n' \
+    text = '16. 1) проверить свойство  ∫( f(x)dx ) = 1;\n' \
            '2) построить график f(x);\n3) найти функцию распределения F(x);\n' \
            '4) найти Р(α < X < β) для данных α, β;\n5) найти М(Х), D(X), σ(X).\n'
     text += '\t |\t0, x <= -1;\n\t |\t1/4 * (x+1), -1 < x <= 1;\nf(x)=|\t1/4 * (3-x), 1 < x <= 3;\n\t |\t0, x>3;\n'
@@ -551,21 +550,76 @@ def task_18():
     MX2 += round(1 / 4 * (3 * 3 ** 3 / 3 - 3 ** 4 / 4) - 1 / 4 * (3 * 1 ** 3 / 3 - 1 ** 4 / 4), 3)
     DX = round(MX2 - MX ** 2, 3)
     std = round(math.sqrt((DX)), 3)
-    answer += f'M(X) = {MX}, D(X) = {DX}, Отклонение = {std}'
+    answer += f'M(X) = {MX}, D(X) = {DX}, Отклонение = {std}\n'
 
     return text, answer
 
-def task_19():
-    answer = '19. '
+
+def task_17():
+    answer = '17. '
     timer = randint(5, 8)
-    departed = randint(2,4)*10
+    departed = randint(2, 4) * 10
     type_list = ('двух с половиной', 'трех', 'трех с половиной', 'четырех', 'четырех с половиной')
     num_list = (2.5, 3, 3.5, 4, 4.5)
-    rand = randint(0,4)
-    text = f'19. Интервал движения дизель поездов через станцию Новая Ляля на Урале составляет {timer} ч.'\
-            'Туристы подходят к вокзалу в некоторый момент времени. Какова вероятность того, '\
-            f'a) что поезд ушел ровно {departed} мин назад? б) что до отхода следующего дизеля '\
-            f'осталось не менее {type_list[rand]} часов?\n'
-    answer+='a) 0 , '
-    answer+=f'б) {(timer - num_list[rand])}/{timer} или {int((timer - num_list[rand])*60)}/{timer*60} или {round((timer - num_list[rand])/timer, 3)}'
+    rand = randint(0, 4)
+    text = f'17. Интервал движения дизель поездов через станцию Новая Ляля на Урале составляет {timer} ч.' \
+           'Туристы подходят к вокзалу в некоторый момент времени. Какова вероятность того, ' \
+           f'a) что поезд ушел ровно {departed} мин назад? б) что до отхода следующего дизеля ' \
+           f'осталось не менее {type_list[rand]} часов?\n'
+    answer += 'a) 0 , '
+    answer += f'б) {(timer - num_list[rand])}/{timer} или {int((timer - num_list[rand]) * 60)}/{timer * 60} или {round((timer - num_list[rand]) / timer, 3)}\n'
+    return text, answer
+
+
+def task_18():
+    answer = '18. '
+    mass = randint(5, 8) * 10
+    sigma = randint(5, 10) * 100
+    ton_sigma = round(sigma / 1000, 1)
+    spread = randint(1, 2)
+    text = '18. Масса полувагона с углем подчиняется нормальному закону распределения ' \
+           f'(m = {mass} т; σ = {sigma} кг). Какова вероятность того, что масса наугад выбранного в ' \
+           f'составе полувагона находится в диапазоне ({mass}±{spread}) т?\n'
+    answer += f'P({mass - spread} < X < {mass + spread}) = Ф({spread}/{ton_sigma}) - Ф({-spread}/{ton_sigma}) '
+    answer += f'= {round(2 * integr_lapl(round((spread) / ton_sigma, 2)), 4)}\n'
+    return text, answer
+
+
+def task_19():
+    answer = '19. '
+    sigma = randint(4, 9)
+    error = randint(10, 14)
+    text = '19. Случайная ошибка измерения имеет нормальное распределение с ' \
+           f'параметрами: σ = {sigma} мм и m = 0. Найти вероятность того, что измерение будет произведено ' \
+           f'с ошибкой, превышающей по абсолютной величине {error} мм\n'
+    answer += f'P(-{error} < X < {error}) = 2*Ф({error}/{sigma}) = '
+    answer += f'{round(2 * integr_lapl(round((error) / sigma, 2)), 4)}\n'
+    return text, answer
+
+
+def task_20():
+    answer = '20. '
+    num = randint(8, 12) * 10
+    m = randrange(100, 150, 5)
+    sum_m = m * num
+    sigma = randrange(20, 30, 5)
+    root_D = round(math.sqrt(num * sigma * sigma), 2)
+    amper = randint(9, 13)
+    time = randrange(800, 1100, 100)
+    need = amper * time
+    while abs((need - sum_m) / root_D) > 3.0:
+        num = randint(8, 12) * 10
+        m = randrange(100, 150, 5)
+        sum_m = m * num
+        sigma = randrange(20, 30, 5)
+        root_D = round(math.sqrt(num * sigma * sigma), 2)
+        amper = randint(9, 13)
+        time = randrange(800, 1100, 100)
+        need = amper * time
+    text = f'20. Батарея состоит из {num} аккумуляторов, заряд Qi каждого из них имеет ' \
+           f'равномерное распределение от {m - sigma * 3} до {m + sigma * 3} A*ч и не зависит от заряда других аккумуляторов. ' \
+           f'Какова вероятность того, что батарея способна обеспечить ток {amper} А в течение {time} ч?\n'
+    not_enought_chance = integr_lapl(round((need - sum_m) / root_D, 2)) + integr_lapl(round(sum_m / root_D, 2))
+    P = round(1 - not_enought_chance, 4)
+    answer += f'm = {m}, σ = {sigma}, D = {num * sigma * sigma}, √D = {root_D}, P(X > {need}) = P({need} < X < +∞) = {P}\n'
     return text, answer
