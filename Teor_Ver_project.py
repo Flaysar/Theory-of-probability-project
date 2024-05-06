@@ -92,8 +92,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_1()
             else:
                 text, answer = Dima_tasks.task_1()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 2:  # если номер = 2, то пишем 2 и т.д.
@@ -105,8 +105,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_2()
             else:
                 text, answer = Dima_tasks.task_2()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 3:
@@ -118,8 +118,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_3()
             else:
                 text, answer = Dima_tasks.task_3()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 4:
@@ -131,8 +131,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_4()
             else:
                 text, answer = Dima_tasks.task_4()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 5:
@@ -144,8 +144,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_5()
             else:
                 text, answer = Dima_tasks.task_5()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 6:
@@ -157,8 +157,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_6()
             else:
                 text, answer = Dima_tasks.task_6()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 7:
@@ -170,8 +170,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_7()
             else:
                 text, answer = Dima_tasks.task_7()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 8:
@@ -183,8 +183,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_8()
             else:
                 text, answer = Dima_tasks.task_8()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 9:
@@ -196,8 +196,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_9()
             else:
                 text, answer = Dima_tasks.task_9()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 10:
@@ -209,8 +209,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_10()
             else:
                 text, answer = Dima_tasks.task_10()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 11:
@@ -222,8 +222,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_11()
             else:
                 text, answer = Dima_tasks.task_11()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 12:
@@ -235,8 +235,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_12()
             else:
                 text, answer = Dima_tasks.task_12()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 13:
@@ -248,8 +248,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_13()
             else:
                 text, answer = Dima_tasks.task_13()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 14:
@@ -261,8 +261,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_14()
             else:
                 text, answer = Dima_tasks.task_14()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 15:
@@ -274,8 +274,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_15()
             else:
                 text, answer = Dima_tasks.task_15()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 16:
@@ -287,8 +287,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_16()
             else:
                 text, answer = Dima_tasks.task_16()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 17:
@@ -300,8 +300,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_17()
             else:
                 text, answer = Dima_tasks.task_17()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 18:
@@ -313,8 +313,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_18()
             else:
                 text, answer = Dima_tasks.task_18()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 19:
@@ -326,8 +326,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_19()
             else:
                 text, answer = Dima_tasks.task_19()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
         if task == 20:
@@ -339,8 +339,8 @@ for i in range(0, variants_count):
                 text, answer = Magas_tasks.task_20()
             else:
                 text, answer = Dima_tasks.task_20()
-            tasks.write(text)
-            answers.write(answer)
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
             continue
 
     tasks.write('\n\n')
@@ -357,7 +357,7 @@ for i in range(0, variants_count):
     #     else:
     #         pass
     #         # задание Димы
-    #     tasks.write(text)
+    #     tasks.write(text+'\n')
     #     continue
     #
     # if task == 22:
@@ -371,7 +371,7 @@ for i in range(0, variants_count):
     #     else:
     #         pass
     #         # задание Димы
-    #     tasks.write(text)
+    #     tasks.write(text+'\n')
     #     continue
 
 tasks.close()
