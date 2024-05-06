@@ -162,7 +162,7 @@ def task_5():
 def task_6():
     task = "6. "
     ph1 = randint(1, 8) / 10
-    ph2 = randint(1, 9 - ph1 * 10) / 10
+    ph2 = randint(1, int(9 - ph1 * 10)) / 10
     ph3 = round(1 - ph1 - ph2, 2)
     p1 = randint(1, 4) / 10
     p2 = randint(1, 4) / 10
