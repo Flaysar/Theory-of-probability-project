@@ -1,4 +1,4 @@
- coding: utf-8
+
 
 from math import sqrt
 from functions import integr_lapl, local_lapl
