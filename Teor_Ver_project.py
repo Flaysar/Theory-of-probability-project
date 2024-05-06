@@ -95,212 +95,197 @@ for i in range(0, variants_count):
 
         if task == 6:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            coin_flip = 1  # !!!!!!!!!!!!!! убрать потом
-            if coin_flip == 1:
-                text += Egors_tasks.task_6()
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_6()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_6()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_6()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 7:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            coin_flip = 1  # !!!!!!!!!!!!!! убрать потом
-            if coin_flip == 1:
-                text += Egors_tasks.task_7()
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_7()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_7()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_7()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 8:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            coin_flip = 1  # !!!!!!!!!!!!!! убрать потом
-            if coin_flip == 1:
-                text += Egors_tasks.task_8()
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_8()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_8()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_8()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 9:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:
-                pass  # pass означает пропуск условия
-                # задание Егора
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_9()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_9()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_9()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 10:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:
-                pass  # pass означает пропуск условия
-                # задание Егора
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_10()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_10()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_10()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 11:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:
-                pass  # pass означает пропуск условия
-                # задание Егора
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_11()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_11()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_11()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 12:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:
-                pass  # pass означает пропуск условия
-                # задание Егора
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_12()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_12()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_12()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 13:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:
-                pass  # pass означает пропуск условия
-                # задание Егора
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_13()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_13()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_13()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 14:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:
-                pass  # pass означает пропуск условия
-                # задание Егора
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_14()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_14()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_14()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 15:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:
-                pass  # pass означает пропуск условия
-                # задание Егора
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_15()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_15()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_15()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 16:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:
-                pass  # pass означает пропуск условия
-                # задание Егора
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_16()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_16()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_16()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 17:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:
-                pass  # pass означает пропуск условия
-                # задание Егора
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_17()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_17()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_17()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 18:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:
-                pass  # pass означает пропуск условия
-                # задание Егора
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_18()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_18()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_18()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 19:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:
-                pass  # pass означает пропуск условия
-                # задание Егора
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_19()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_19()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_19()
             tasks.write(text)
+            answers.write(answer)
             continue
 
         if task == 20:
             coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:
-                pass  # pass означает пропуск условия
-                # задание Егора
+            if coin_flip == 1:  # задание Егора
+                text, answer = Egors_tasks.task_20()
+
             elif coin_flip == 2:
-                pass
-                # задание Маги
+                text, answer = Magas_tasks.task_20()
             else:
-                pass
-                # задание Димы
+                text, answer = Dima_tasks.task_20()
             tasks.write(text)
+            answers.write(answer)
             continue
 
     tasks.write('\n\n')
